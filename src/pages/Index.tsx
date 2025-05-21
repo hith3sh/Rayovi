@@ -1,12 +1,215 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import React from 'react';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import RecentActivity from '@/components/RecentActivity';
+import PopularVideos from '@/components/PopularVideos';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
 
 const Index = () => {
+  // Mock data for videos
+  const popularVideos = [
+    {
+      id: "1",
+      title: "How I Learned to Stop Worrying and Love AI",
+      thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
+      channelName: "TechTalks",
+      year: "2023",
+      rating: 4.5,
+    },
+    {
+      id: "2",
+      title: "Ultimate Guide to Web Development in 2025",
+      thumbnail: "https://i.ytimg.com/vi/j5-yKhDd64s/maxresdefault.jpg",
+      channelName: "CodeMaster",
+      year: "2025",
+      rating: 4.8,
+    },
+    {
+      id: "3",
+      title: "The Future of Electric Vehicles",
+      thumbnail: "https://i.ytimg.com/vi/9vz06QO3UkQ/maxresdefault.jpg",
+      channelName: "TechReview",
+      year: "2024",
+      rating: 4.2,
+    },
+    {
+      id: "4",
+      title: "Making Sourdough Bread From Scratch",
+      thumbnail: "https://i.ytimg.com/vi/jJpIzr2sCDE/maxresdefault.jpg",
+      channelName: "FoodChannel",
+      year: "2023",
+      rating: 4.7,
+    },
+    {
+      id: "5",
+      title: "How to Start Investing in Stocks",
+      thumbnail: "https://i.ytimg.com/vi/Vn3IRHhPXMo/maxresdefault.jpg",
+      channelName: "FinanceExpert",
+      year: "2024",
+      rating: 4.9,
+    },
+  ];
+
+  const recentVideos = [
+    {
+      id: "6",
+      title: "Advanced Machine Learning Techniques",
+      thumbnail: "https://i.ytimg.com/vi/NWONeJKn6kc/maxresdefault.jpg",
+      channelName: "AI Academy",
+      year: "2025",
+      rating: 4.3,
+    },
+    {
+      id: "7",
+      title: "Home Renovation on a Budget",
+      thumbnail: "https://i.ytimg.com/vi/XwfzqCDuQCQ/maxresdefault.jpg",
+      channelName: "DIY Home",
+      year: "2024",
+      rating: 4.6,
+    },
+    {
+      id: "8",
+      title: "Learning Piano in 30 Days",
+      thumbnail: "https://i.ytimg.com/vi/WJ3-F02-F_Y/maxresdefault.jpg",
+      channelName: "MusicMaster",
+      year: "2023",
+      rating: 4.4,
+    },
+    {
+      id: "9",
+      title: "Traveling Through Japan",
+      thumbnail: "https://i.ytimg.com/vi/HG6LRH-kJQ0/maxresdefault.jpg",
+      channelName: "TravelVlogs",
+      year: "2024",
+      rating: 4.8,
+    },
+    {
+      id: "10",
+      title: "Full Body Workout at Home",
+      thumbnail: "https://i.ytimg.com/vi/UBMk30rjy0o/maxresdefault.jpg",
+      channelName: "FitLife",
+      year: "2025",
+      rating: 4.5,
+    },
+  ];
+
+  // Mock data for activities
+  const activities = [
+    {
+      id: "1",
+      user: {
+        name: "Alex Johnson",
+        avatar: "https://i.pravatar.cc/100?img=1",
+        initials: "AJ",
+      },
+      action: "watched and rated ★★★★½",
+      video: {
+        title: "How I Learned to Stop Worrying and Love AI",
+        thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
+      },
+      timestamp: "2 hours ago",
+    },
+    {
+      id: "2",
+      user: {
+        name: "Maria Garcia",
+        avatar: "https://i.pravatar.cc/100?img=2",
+        initials: "MG",
+      },
+      action: "added to watchlist",
+      video: {
+        title: "Ultimate Guide to Web Development in 2025",
+        thumbnail: "https://i.ytimg.com/vi/j5-yKhDd64s/maxresdefault.jpg",
+      },
+      timestamp: "4 hours ago",
+    },
+    {
+      id: "3",
+      user: {
+        name: "David Kim",
+        avatar: "https://i.pravatar.cc/100?img=3",
+        initials: "DK",
+      },
+      action: "rated ★★★★",
+      video: {
+        title: "The Future of Electric Vehicles",
+        thumbnail: "https://i.ytimg.com/vi/9vz06QO3UkQ/maxresdefault.jpg",
+      },
+      timestamp: "Yesterday",
+    },
+    {
+      id: "4",
+      user: {
+        name: "Sarah Wilson",
+        avatar: "https://i.pravatar.cc/100?img=4",
+        initials: "SW",
+      },
+      action: "reviewed",
+      video: {
+        title: "Making Sourdough Bread From Scratch",
+        thumbnail: "https://i.ytimg.com/vi/jJpIzr2sCDE/maxresdefault.jpg",
+      },
+      timestamp: "2 days ago",
+    },
+  ];
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="flex min-h-screen flex-col">
+      <Navbar />
+      
+      <main className="flex-1">
+        {/* Hero section */}
+        <section className="bg-gradient-to-r from-secondary to-black py-16 text-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-2xl space-y-6">
+              <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">
+                Track videos you've watched.
+                <br />
+                Save those you want to see.
+                <br />
+                Tell your friends what's good.
+              </h1>
+              <p className="text-lg text-gray-300">
+                The social network for video lovers. Create a profile to track and rate your favorite YouTube videos, write reviews, make lists, and connect with other content enthusiasts.
+              </p>
+              <div className="space-x-4">
+                <Button size="lg" className="bg-primary hover:bg-primary/90">
+                  Get started — it's free!
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Content section */}
+        <section className="py-12">
+          <div className="container mx-auto grid grid-cols-1 gap-12 px-4 lg:grid-cols-3">
+            <div className="col-span-2 space-y-12">
+              <PopularVideos videos={popularVideos} title="Popular this week" />
+              <Separator />
+              <PopularVideos videos={recentVideos} title="Recently added" />
+            </div>
+            
+            <div className="space-y-8">
+              <div className="rounded-lg bg-gray-50 p-6">
+                <h3 className="mb-4 text-lg font-semibold">Join today</h3>
+                <p className="mb-6 text-gray-600">
+                  Keep track of every video you've ever watched or just start from the day you join. Rate, review and tag as you go.
+                </p>
+                <Button className="w-full bg-primary hover:bg-primary/90">
+                  Create an account
+                </Button>
+              </div>
+              
+              <RecentActivity activities={activities} />
+            </div>
+          </div>
+        </section>
+      </main>
+      
+      <Footer />
     </div>
   );
 };
