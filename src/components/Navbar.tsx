@@ -31,6 +31,12 @@ const Navbar: React.FC = () => {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
           </div>
           
+          <Link to="/profile">
+            <Button variant="ghost" size="sm" className="text-gray-600">
+              Profile
+            </Button>
+          </Link>
+          
           <Button variant="ghost" size="sm" className="text-gray-600">
             Log in
           </Button>
