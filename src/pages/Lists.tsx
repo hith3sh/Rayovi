@@ -858,21 +858,15 @@ const ListsPage = () => {
       <Navbar />
       
       <main className="flex-1">
-        {/* Header section - Now seamlessly integrated with dark theme */}
-        <div className="bg-background">
-          <div className="container mx-auto px-4 py-16">
-            <div className="text-center space-y-6">
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-                Collect, curate, and share. Lists are the perfect way to group videos.
-              </h1>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Discover handpicked collections of the best videos on the internet, or create your own to share with the community.
-              </p>
-              <Button size="lg" className="btn-letterboxd">
-                <Plus className="h-5 w-5 mr-2" />
-                Start your own list
-              </Button>
-            </div>
+        {/* Simple header section - matching the uploaded design */}
+        <div className="bg-background py-12">
+          <div className="container mx-auto px-4 text-center">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-4">
+              Collect, curate, and share. Lists are the perfect way to group videos.
+            </h1>
+            <Button size="lg" className="btn-letterboxd mt-8">
+              Start your own list
+            </Button>
           </div>
         </div>
 
