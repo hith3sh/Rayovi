@@ -6,7 +6,7 @@ import { Search } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="border-b border-gray-200 bg-white py-4">
+    <nav className="nav-letterboxd py-4">
       <div className="container mx-auto flex items-center justify-between px-4">
         <div className="flex items-center space-x-8">
           <Link to="/" className="flex items-center">
@@ -14,9 +14,15 @@ const Navbar: React.FC = () => {
           </Link>
           
           <div className="hidden md:flex space-x-6">
-            <Link to="/films" className="text-gray-600 hover:text-primary">Videos</Link>
-            <Link to="/lists" className="text-gray-600 hover:text-primary">Lists</Link>
-            <Link to="/members" className="text-gray-600 hover:text-primary">Members</Link>
+            <Link to="/films" className="nav-item-letterboxd px-3 py-2 rounded transition-all duration-200">
+              Videos
+            </Link>
+            <Link to="/lists" className="nav-item-letterboxd px-3 py-2 rounded transition-all duration-200">
+              Lists
+            </Link>
+            <Link to="/members" className="nav-item-letterboxd px-3 py-2 rounded transition-all duration-200">
+              Members
+            </Link>
           </div>
         </div>
         
@@ -25,22 +31,22 @@ const Navbar: React.FC = () => {
             <Input
               type="search"
               placeholder="Search videos..."
-              className="w-64 pl-10 pr-4 py-2 rounded-full bg-gray-100 focus:bg-white"
+              className="search-letterboxd w-64 pl-10 pr-4 py-2"
             />
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           </div>
           
           <Link to="/profile">
-            <Button variant="ghost" size="sm" className="text-gray-600">
+            <Button variant="ghost" size="sm" className="btn-letterboxd-ghost">
               Profile
             </Button>
           </Link>
           
-          <Button variant="ghost" size="sm" className="text-gray-600">
+          <Button variant="ghost" size="sm" className="btn-letterboxd-ghost">
             Log in
           </Button>
           
-          <Button variant="default" size="sm">
+          <Button variant="default" size="sm" className="btn-letterboxd">
             Create account
           </Button>
         </div>

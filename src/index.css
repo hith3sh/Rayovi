@@ -4,82 +4,44 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 20 14 23; /* #14171A - Deep charcoal */
+    --foreground: 235 239 240; /* #EBEEF0 - Off-white */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 28 33 36; /* #1C2124 - Elevated dark surface */
+    --card-foreground: 235 239 240; /* #EBEEF0 - Off-white */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 28 33 36; /* #1C2124 - Dark modal background */
+    --popover-foreground: 235 239 240; /* #EBEEF0 - Off-white */
 
-    --primary: 0 86% 38%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 0 224 84; /* #00E054 - Letterboxd green */
+    --primary-foreground: 20 14 23; /* #14171A - Dark text on green */
 
-    --secondary: 0 0% 11%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 28 33 36; /* #1C2124 - Secondary dark surface */
+    --secondary-foreground: 235 239 240; /* #EBEEF0 - Off-white */
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 28 33 36; /* #1C2124 - Muted background */
+    --muted-foreground: 153 170 187; /* #99AABB - Light gray secondary text */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 28 33 36; /* #1C2124 - Accent background */
+    --accent-foreground: 235 239 240; /* #EBEEF0 - Off-white */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 239 68 68; /* Red for destructive actions */
+    --destructive-foreground: 235 239 240; /* #EBEEF0 - Off-white */
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 0 86% 38%;
+    --border: 55 65 81; /* #374151 - Subtle borders */
+    --input: 28 33 36; /* #1C2124 - Input background */
+    --ring: 0 224 84; /* #00E054 - Focus ring green */
 
-    --radius: 0.5rem;
+    --radius: 0.25rem; /* 4px border radius */
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 0 0% 11%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 0 86% 38%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 20 14 23; /* #14171A */
+    --sidebar-foreground: 235 239 240; /* #EBEEF0 */
+    --sidebar-primary: 0 224 84; /* #00E054 */
+    --sidebar-primary-foreground: 20 14 23; /* #14171A */
+    --sidebar-accent: 28 33 36; /* #1C2124 */
+    --sidebar-accent-foreground: 235 239 240; /* #EBEEF0 */
+    --sidebar-border: 55 65 81; /* #374151 */
+    --sidebar-ring: 0 224 84; /* #00E054 */
   }
 }
 
@@ -90,16 +52,37 @@
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Custom scrollbar for dark theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/30;
   }
 }
 
 @layer components {
+  /* Video card components with dark theme */
   .video-card {
-    @apply overflow-hidden rounded-md transition-all duration-300 hover:shadow-lg;
+    @apply overflow-hidden rounded transition-all duration-200 hover:shadow-xl;
+    border-radius: 4px;
   }
   
   .video-card-image {
-    @apply aspect-video w-full object-cover transition-transform duration-300;
+    @apply aspect-video w-full object-cover transition-transform duration-200;
   }
   
   .video-card:hover .video-card-image {
@@ -115,9 +98,10 @@
   }
   
   .star-unrated {
-    @apply text-gray-300;
+    @apply text-muted-foreground/50;
   }
 
+  /* Dark theme specific utilities */
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -125,5 +109,279 @@
   
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Enhanced shadows for dark theme */
+  .shadow-letterboxd {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  }
+
+  .shadow-letterboxd-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  }
+
+  .shadow-letterboxd-xl {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Letterboxd-style hover effects */
+  .letterboxd-hover {
+    @apply transition-all duration-200 hover:shadow-letterboxd-lg;
+  }
+
+  .letterboxd-hover:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Focus states with green accent */
+  .focus-letterboxd {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background;
+  }
+
+  /* Button variants for dark theme */
+  .btn-letterboxd {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 focus-letterboxd;
+    @apply transition-all duration-200 rounded;
+    border-radius: 4px;
+  }
+
+  .btn-letterboxd-outline {
+    @apply border border-primary text-primary hover:bg-primary hover:text-primary-foreground focus-letterboxd;
+    @apply transition-all duration-200 rounded;
+    border-radius: 4px;
+  }
+
+  .btn-letterboxd-ghost {
+    @apply text-foreground hover:bg-accent hover:text-accent-foreground focus-letterboxd;
+    @apply transition-all duration-200 rounded;
+    border-radius: 4px;
+  }
+
+  /* Card styles for dark theme */
+  .card-letterboxd {
+    @apply bg-card text-card-foreground shadow-letterboxd rounded border border-border/50;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+
+  .card-letterboxd:hover {
+    @apply shadow-letterboxd-lg;
+    transform: translateY(-1px);
+  }
+
+  /* Input styles for dark theme */
+  .input-letterboxd {
+    @apply bg-input border border-border text-foreground placeholder:text-muted-foreground;
+    @apply focus:border-primary focus:ring-2 focus:ring-primary/20 focus:ring-offset-0;
+    @apply transition-all duration-200 rounded;
+    border-radius: 4px;
+  }
+
+  /* Navigation styles */
+  .nav-letterboxd {
+    @apply bg-background/95 backdrop-blur-sm border-b border-border/50;
+  }
+
+  .nav-item-letterboxd {
+    @apply text-muted-foreground hover:text-foreground transition-colors duration-200;
+  }
+
+  .nav-item-letterboxd:hover {
+    @apply bg-accent/50;
+  }
+
+  /* Modal/Dialog styles */
+  .modal-letterboxd {
+    @apply bg-popover text-popover-foreground shadow-letterboxd-xl rounded border border-border/50;
+    border-radius: 4px;
+  }
+
+  /* Avatar enhancements */
+  .avatar-letterboxd {
+    @apply ring-2 ring-border/50 transition-all duration-200;
+  }
+
+  .avatar-letterboxd:hover {
+    @apply ring-primary/50;
+  }
+
+  /* Text color utilities for dark theme */
+  .text-primary-letterboxd {
+    color: hsl(var(--foreground));
+  }
+
+  .text-secondary-letterboxd {
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Background utilities */
+  .bg-surface-letterboxd {
+    background-color: hsl(var(--card));
+  }
+
+  .bg-elevated-letterboxd {
+    background-color: hsl(var(--popover));
+  }
+
+  /* Border utilities */
+  .border-letterboxd {
+    border-color: hsl(var(--border));
+  }
+
+  /* Gradient backgrounds for hero sections */
+  .gradient-letterboxd {
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--card)) 100%);
+  }
+
+  .gradient-letterboxd-accent {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary))/80% 100%);
+  }
+
+  /* List card specific styles */
+  .list-card-letterboxd {
+    @apply card-letterboxd transition-all duration-200;
+  }
+
+  .list-card-letterboxd:hover {
+    @apply border-primary/30;
+  }
+
+  /* Member card styles */
+  .member-card-letterboxd {
+    @apply card-letterboxd;
+  }
+
+  .member-card-letterboxd:hover .avatar-letterboxd {
+    @apply ring-primary/50 scale-105;
+  }
+
+  /* Video thumbnail stack effects */
+  .thumbnail-stack {
+    @apply transition-transform duration-200;
+  }
+
+  .thumbnail-stack:hover {
+    @apply scale-105;
+  }
+
+  /* Search input specific styling */
+  .search-letterboxd {
+    @apply input-letterboxd bg-card/50;
+  }
+
+  .search-letterboxd:focus {
+    @apply bg-card;
+  }
+
+  /* Footer styling */
+  .footer-letterboxd {
+    @apply bg-card/50 border-t border-border/50;
+  }
+
+  /* Stats and metrics styling */
+  .stat-letterboxd {
+    @apply text-muted-foreground text-sm;
+  }
+
+  .stat-letterboxd .stat-number {
+    @apply text-foreground font-medium;
+  }
+
+  /* Loading skeleton dark theme */
+  .skeleton-letterboxd {
+    @apply bg-muted/50 animate-pulse rounded;
+    border-radius: 4px;
+  }
+
+  /* Tag/badge styling */
+  .badge-letterboxd {
+    @apply bg-primary/10 text-primary border border-primary/20 rounded-full;
+    border-radius: 4px;
+  }
+
+  /* Separator styling */
+  .separator-letterboxd {
+    @apply bg-border/50;
+  }
+
+  /* Toast/notification styling */
+  .toast-letterboxd {
+    @apply bg-popover text-popover-foreground border border-border/50 shadow-letterboxd-lg rounded;
+    border-radius: 4px;
+  }
+
+  /* Tab styling */
+  .tab-letterboxd {
+    @apply text-muted-foreground hover:text-foreground border-b-2 border-transparent;
+    @apply data-[state=active]:border-primary data-[state=active]:text-foreground;
+    @apply transition-all duration-200;
+  }
+
+  /* Form styling */
+  .form-letterboxd .form-label {
+    @apply text-foreground font-medium;
+  }
+
+  .form-letterboxd .form-description {
+    @apply text-muted-foreground;
+  }
+
+  .form-letterboxd .form-message {
+    @apply text-destructive;
+  }
+}
+
+/* Additional dark theme specific animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.animate-slideInFromLeft {
+  animation: slideInFromLeft 0.2s ease-out;
+}
+
+/* Ensure proper contrast for accessibility */
+@media (prefers-contrast: high) {
+  :root {
+    --border: 156 163 175; /* Increased contrast for borders */
+    --muted-foreground: 209 213 219; /* Increased contrast for secondary text */
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .video-card-image,
+  .thumbnail-stack,
+  .avatar-letterboxd,
+  .letterboxd-hover {
+    @apply transition-none;
+  }
+  
+  .video-card:hover .video-card-image,
+  .thumbnail-stack:hover,
+  .letterboxd-hover:hover {
+    transform: none;
   }
 }

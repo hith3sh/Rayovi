@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -20,23 +19,25 @@ const VideoCard: React.FC<VideoCardProps> = ({
   rating 
 }) => {
   return (
-    <div className="video-card">
+    <div className="video-card card-letterboxd">
       <Link to={`/video/${id}`}>
-        <div className="relative overflow-hidden rounded-md">
+        <div className="relative overflow-hidden">
           <img 
             src={thumbnail} 
             alt={title}
             className="video-card-image"
           />
           {rating && (
-            <div className="absolute bottom-2 right-2 rounded-full bg-black/70 px-2 py-1 text-xs text-white">
+            <div className="absolute bottom-2 right-2 rounded bg-background/90 px-2 py-1 text-xs text-foreground backdrop-blur-sm">
               {rating.toFixed(1)}
             </div>
           )}
         </div>
-        <div className="mt-2">
-          <h3 className="font-medium text-sm line-clamp-2">{title}</h3>
-          <div className="mt-1 flex items-center text-xs text-gray-500">
+        <div className="p-3">
+          <h3 className="font-medium text-sm line-clamp-2 text-foreground hover:text-primary transition-colors duration-200">
+            {title}
+          </h3>
+          <div className="mt-2 flex items-center text-xs text-muted-foreground">
             <span>{channelName}</span>
             <span className="mx-1">•</span>
             <span>{year}</span>
