@@ -355,14 +355,21 @@ const ListsPage = () => {
       <Link to={`/lists/${list.id}`}>
         <CardContent className="p-6">
           <div className="flex gap-6">
-            {/* Horizontal thumbnail row */}
-            <div className="flex gap-2 flex-shrink-0">
+            {/* Card stack thumbnail display */}
+            <div className="relative flex-shrink-0 w-[128px] h-[56px]">
               {list.thumbnails.slice(0, 4).map((thumbnail, index) => (
-                <div key={index} className="relative w-20 h-14 overflow-hidden rounded-md">
+                <div 
+                  key={index} 
+                  className="absolute w-20 h-14 overflow-hidden rounded-md transition-transform duration-300 group-hover:scale-105"
+                  style={{ 
+                    left: `${index * 16}px`, 
+                    zIndex: list.thumbnails.length - index 
+                  }}
+                >
                   <img 
                     src={thumbnail} 
-                    alt=""
-                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    alt={list.title}
+                    className="h-full w-full object-cover"
                   />
                   {index === 0 && (
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
@@ -432,14 +439,21 @@ const ListsPage = () => {
       <Link to={`/lists/${list.id}`}>
         <CardContent className="p-4">
           <div className="flex gap-4">
-            {/* Horizontal thumbnail row */}
-            <div className="flex gap-1 flex-shrink-0">
+            {/* Card stack thumbnail display */}
+            <div className="relative flex-shrink-0 w-[88px] h-[48px]">
               {list.thumbnails.slice(0, 3).map((thumbnail, index) => (
-                <div key={index} className="relative w-16 h-12 overflow-hidden rounded">
+                <div 
+                  key={index} 
+                  className="absolute w-16 h-12 overflow-hidden rounded transition-transform duration-300 group-hover:scale-105"
+                  style={{ 
+                    left: `${index * 12}px`, 
+                    zIndex: list.thumbnails.length - index 
+                  }}
+                >
                   <img 
                     src={thumbnail} 
-                    alt=""
-                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    alt={list.title}
+                    className="h-full w-full object-cover"
                   />
                 </div>
               ))}
@@ -501,9 +515,16 @@ const ListsPage = () => {
     <Card className="overflow-hidden shadow-lg">
       <CardContent className="p-6">
         <div className="flex gap-6">
-          <div className="flex gap-2 flex-shrink-0">
+          <div className="relative flex-shrink-0 w-[128px] h-[56px]">
             {Array.from({ length: 4 }).map((_, index) => (
-              <Skeleton key={index} className="w-20 h-14 rounded-md" />
+              <Skeleton 
+                key={index} 
+                className="absolute w-20 h-14 rounded-md" 
+                style={{ 
+                  left: `${index * 16}px`, 
+                  zIndex: 4 - index 
+                }}
+              />
             ))}
           </div>
           <div className="flex-1 space-y-3">
@@ -535,9 +556,16 @@ const ListsPage = () => {
     <Card className="overflow-hidden">
       <CardContent className="p-4">
         <div className="flex gap-4">
-          <div className="flex gap-1 flex-shrink-0">
+          <div className="relative flex-shrink-0 w-[88px] h-[48px]">
             {Array.from({ length: 3 }).map((_, index) => (
-              <Skeleton key={index} className="w-16 h-12 rounded" />
+              <Skeleton 
+                key={index} 
+                className="absolute w-16 h-12 rounded" 
+                style={{ 
+                  left: `${index * 12}px`, 
+                  zIndex: 3 - index 
+                }}
+              />
             ))}
           </div>
           <div className="flex-1 space-y-2">
