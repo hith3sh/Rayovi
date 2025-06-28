@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from "@/components/ui/button";
+import { Plus, Eye } from 'lucide-react';
 
 interface VideoCardProps {
   id: string;
@@ -8,6 +10,8 @@ interface VideoCardProps {
   channelName: string;
   year: string;
   rating?: number;
+  watched?: boolean;
+  onAddToList?: (videoId: string) => void;
 }
 
 const VideoCard: React.FC<VideoCardProps> = ({ 
@@ -16,10 +20,20 @@ const VideoCard: React.FC<VideoCardProps> = ({
   thumbnail, 
   channelName, 
   year, 
-  rating 
+  rating,
+  watched,
+  onAddToList
 }) => {
+  const handleAddToList = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (onAddToList) {
+      onAddToList(id);
+    }
+  };
+
   return (
-    <div className="video-card card-letterboxd">
+    <div className="video-card card-letterboxd group relative">
       <Link to={`/video/${id}`}>
         <div className="relative overflow-hidden">
           <img 
@@ -27,6 +41,26 @@ const VideoCard: React.FC<VideoCardProps> = ({
             alt={title}
             className="video-card-image"
           />
+          
+          {/* Watched Badge */}
+          {watched && (
+            <div className="absolute top-2 left-2 bg-background/90 text-foreground rounded px-2 py-1 text-xs font-medium backdrop-blur-sm flex items-center gap-1">
+              <Eye className="h-3 w-3" />
+              Watched
+            </div>
+          )}
+          
+          {/* Add to List Button */}
+          {onAddToList && (
+            <Button
+              size="sm"
+              onClick={handleAddToList}
+              className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-primary/90 hover:bg-primary text-primary-foreground backdrop-blur-sm"
+            >
+              <Plus className="h-3 w-3" />
+            </Button>
+          )}
+          
           {rating && (
             <div className="absolute bottom-2 right-2 rounded bg-background/90 px-2 py-1 text-xs text-foreground backdrop-blur-sm">
               {rating.toFixed(1)}
