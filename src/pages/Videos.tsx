@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Search, Filter, ChevronDown } from 'lucide-react';
 import { toast } from "@/components/ui/sonner";
+import { Link } from 'react-router-dom';
 
 interface Video {
   id: string;
@@ -21,11 +22,108 @@ interface Video {
   uploadDate: string;
 }
 
+interface CategoryCard {
+  id: string;
+  name: string;
+  gradient: string;
+  thumbnail: string;
+  videoCount: number;
+}
+
 const VideosPage = () => {
   const [sortBy, setSortBy] = useState<string>('most_recent');
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredVideos, setFilteredVideos] = useState<Video[]>([]);
+  const [showCategories, setShowCategories] = useState(true);
+
+  // Category cards with Spotify-style gradients
+  const categoryCards: CategoryCard[] = [
+    {
+      id: 'tech',
+      name: 'Technology',
+      gradient: 'from-blue-500 to-purple-600',
+      thumbnail: 'https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg',
+      videoCount: 156
+    },
+    {
+      id: 'music',
+      name: 'Music',
+      gradient: 'from-pink-500 to-rose-500',
+      thumbnail: 'https://i.ytimg.com/vi/j5-yKhDd64s/maxresdefault.jpg',
+      videoCount: 89
+    },
+    {
+      id: 'comedy',
+      name: 'Comedy',
+      gradient: 'from-yellow-400 to-orange-500',
+      thumbnail: 'https://i.ytimg.com/vi/9vz06QO3UkQ/maxresdefault.jpg',
+      videoCount: 67
+    },
+    {
+      id: 'food',
+      name: 'Food & Cooking',
+      gradient: 'from-green-400 to-emerald-600',
+      thumbnail: 'https://i.ytimg.com/vi/jJpIzr2sCDE/maxresdefault.jpg',
+      videoCount: 43
+    },
+    {
+      id: 'documentary',
+      name: 'Documentary',
+      gradient: 'from-slate-600 to-slate-800',
+      thumbnail: 'https://i.ytimg.com/vi/kJp4CFGGQkI/maxresdefault.jpg',
+      videoCount: 78
+    },
+    {
+      id: 'travel',
+      name: 'Travel',
+      gradient: 'from-cyan-400 to-blue-500',
+      thumbnail: 'https://i.ytimg.com/vi/HG6LRH-kJQ0/maxresdefault.jpg',
+      videoCount: 52
+    },
+    {
+      id: 'fitness',
+      name: 'Fitness',
+      gradient: 'from-red-500 to-pink-600',
+      thumbnail: 'https://i.ytimg.com/vi/UBMk30rjy0o/maxresdefault.jpg',
+      videoCount: 34
+    },
+    {
+      id: 'lifestyle',
+      name: 'Lifestyle',
+      gradient: 'from-purple-500 to-indigo-600',
+      thumbnail: 'https://i.ytimg.com/vi/XwfzqCDuQCQ/maxresdefault.jpg',
+      videoCount: 91
+    },
+    {
+      id: 'science',
+      name: 'Science',
+      gradient: 'from-teal-500 to-cyan-600',
+      thumbnail: 'https://i.ytimg.com/vi/NWONeJKn6kc/maxresdefault.jpg',
+      videoCount: 45
+    },
+    {
+      id: 'film',
+      name: 'Film & TV',
+      gradient: 'from-violet-500 to-purple-700',
+      thumbnail: 'https://i.ytimg.com/vi/MzPrsmk0pnA/maxresdefault.jpg',
+      videoCount: 123
+    },
+    {
+      id: 'gaming',
+      name: 'Gaming',
+      gradient: 'from-orange-500 to-red-600',
+      thumbnail: 'https://i.ytimg.com/vi/7ku5YJtfH_0/maxresdefault.jpg',
+      videoCount: 87
+    },
+    {
+      id: 'education',
+      name: 'Educational',
+      gradient: 'from-emerald-500 to-teal-600',
+      thumbnail: 'https://i.ytimg.com/vi/xWPUJDG4Gk4/maxresdefault.jpg',
+      videoCount: 76
+    }
+  ];
 
   // Mock data for trending videos
   const trendingVideos: Video[] = [
@@ -296,6 +394,9 @@ const VideosPage = () => {
     // Filter by category
     if (selectedCategory !== 'all') {
       filtered = filtered.filter(video => video.category === selectedCategory);
+      setShowCategories(false);
+    } else {
+      setShowCategories(true);
     }
 
     // Filter by search term
@@ -304,6 +405,7 @@ const VideosPage = () => {
         video.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         video.channelName.toLowerCase().includes(searchTerm.toLowerCase())
       );
+      setShowCategories(false);
     }
 
     // Sort videos
@@ -329,6 +431,11 @@ const VideosPage = () => {
     });
   };
 
+  const handleCategoryClick = (categoryId: string) => {
+    setSelectedCategory(categoryId);
+    setSearchTerm('');
+  };
+
   const categories = [
     { value: 'all', label: 'All Categories' },
     { value: 'tech', label: 'Technology' },
@@ -340,7 +447,9 @@ const VideosPage = () => {
     { value: 'fitness', label: 'Fitness' },
     { value: 'lifestyle', label: 'Lifestyle' },
     { value: 'science', label: 'Science' },
-    { value: 'film', label: 'Film & TV' }
+    { value: 'film', label: 'Film & TV' },
+    { value: 'gaming', label: 'Gaming' },
+    { value: 'education', label: 'Educational' }
   ];
 
   return (
@@ -410,22 +519,80 @@ const VideosPage = () => {
 
         {/* Content sections */}
         <div className="container mx-auto px-4 py-8 space-y-12">
+          {/* Spotify-style Category Grid */}
+          {showCategories && (
+            <section>
+              <h2 className="text-2xl font-bold text-foreground mb-6">Browse by Category</h2>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {categoryCards.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => handleCategoryClick(category.id)}
+                    className="group relative overflow-hidden rounded-lg aspect-square transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                  >
+                    <div className={`absolute inset-0 bg-gradient-to-br ${category.gradient} opacity-90`} />
+                    <div className="absolute inset-0 bg-black/20" />
+                    
+                    {/* Category thumbnail */}
+                    <div className="absolute bottom-4 right-4 w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden shadow-lg transform rotate-12 group-hover:rotate-6 transition-transform duration-300">
+                      <img 
+                        src={category.thumbnail} 
+                        alt={category.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    
+                    {/* Category info */}
+                    <div className="absolute inset-0 p-4 flex flex-col justify-between">
+                      <div>
+                        <h3 className="text-white font-bold text-lg md:text-xl leading-tight">
+                          {category.name}
+                        </h3>
+                      </div>
+                      <div className="text-white/80 text-sm">
+                        {category.videoCount} videos
+                      </div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </section>
+          )}
+
           {/* Trending Now Carousel */}
-          <VideoCarousel 
-            title="Trending Now" 
-            videos={trendingVideos} 
-            onAddToList={handleAddToList}
-          />
+          {showCategories && (
+            <VideoCarousel 
+              title="Trending Now" 
+              videos={trendingVideos} 
+              onAddToList={handleAddToList}
+            />
+          )}
 
           {/* Main video grid */}
           <section>
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-foreground">
-                {searchTerm ? `Search Results (${filteredVideos.length})` : 'All Videos'}
+                {searchTerm ? `Search Results (${filteredVideos.length})` : 
+                 selectedCategory !== 'all' ? `${categories.find(c => c.value === selectedCategory)?.label} Videos` : 
+                 'All Videos'}
               </h2>
-              <span className="text-sm text-muted-foreground">
-                {filteredVideos.length} videos found
-              </span>
+              <div className="flex items-center gap-4">
+                {(selectedCategory !== 'all' || searchTerm) && (
+                  <Button 
+                    variant="outline" 
+                    onClick={() => {
+                      setSearchTerm('');
+                      setSelectedCategory('all');
+                    }}
+                    className="btn-letterboxd-outline"
+                  >
+                    Show All
+                  </Button>
+                )}
+                <span className="text-sm text-muted-foreground">
+                  {filteredVideos.length} videos found
+                </span>
+              </div>
             </div>
             
             {filteredVideos.length === 0 ? (
@@ -464,26 +631,31 @@ const VideosPage = () => {
             )}
           </section>
 
-          {/* Hidden Gems */}
-          <VideoCarousel 
-            title="Hidden Gems" 
-            videos={hiddenGems} 
-            onAddToList={handleAddToList}
-          />
+          {/* Additional carousels only show when browsing all categories */}
+          {showCategories && (
+            <>
+              {/* Hidden Gems */}
+              <VideoCarousel 
+                title="Hidden Gems" 
+                videos={hiddenGems} 
+                onAddToList={handleAddToList}
+              />
 
-          {/* Recently Reviewed */}
-          <VideoCarousel 
-            title="Recently Reviewed" 
-            videos={recentlyReviewed} 
-            onAddToList={handleAddToList}
-          />
+              {/* Recently Reviewed */}
+              <VideoCarousel 
+                title="Recently Reviewed" 
+                videos={recentlyReviewed} 
+                onAddToList={handleAddToList}
+              />
 
-          {/* Shorts Worth Watching */}
-          <VideoCarousel 
-            title="Shorts Worth Watching" 
-            videos={shortsWorthWatching} 
-            onAddToList={handleAddToList}
-          />
+              {/* Shorts Worth Watching */}
+              <VideoCarousel 
+                title="Shorts Worth Watching" 
+                videos={shortsWorthWatching} 
+                onAddToList={handleAddToList}
+              />
+            </>
+          )}
 
           {/* Pagination placeholder */}
           <div className="text-center py-8">
