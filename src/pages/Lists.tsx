@@ -351,16 +351,16 @@ const ListsPage = () => {
   };
 
   const BigListCard = ({ list }: { list: VideoList }) => (
-    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-xl border-2 border-transparent hover:border-primary/60 shadow-lg">
+    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-xl shadow-lg">
       <Link to={`/lists/${list.id}`}>
         <CardContent className="p-0">
           {/* Large prominent image section */}
-          <div className="relative h-48 overflow-hidden">
+          <div className="relative h-48 overflow-hidden bg-gray-100">
             <div className="relative w-full h-full">
               {list.thumbnails.slice(0, 4).map((thumbnail, index) => (
                 <div 
                   key={index} 
-                  className="absolute w-24 h-16 overflow-hidden rounded-md shadow-lg transition-transform duration-300"
+                  className="absolute w-24 h-16 overflow-hidden rounded-md shadow-lg transition-transform duration-300 group-hover:scale-105"
                   style={{ 
                     left: `${20 + index * 20}px`,
                     top: `${20 + index * 8}px`,
@@ -375,12 +375,8 @@ const ListsPage = () => {
                 </div>
               ))}
               
-              {/* Overlay with play button */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center">
-                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50 rounded-full p-3">
-                  <Play className="h-6 w-6 text-white fill-current" />
-                </div>
-              </div>
+              {/* Simple overlay on hover */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-300" />
             </div>
           </div>
           
@@ -715,20 +711,6 @@ const ListsPage = () => {
             </div>
           </section>
         )}
-
-        {/* Call to action section */}
-        <section className="py-16 bg-gray-900 text-white">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-4">Create Your Own List</h2>
-            <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
-              Curate your favorite videos, share your discoveries, and help others find amazing content.
-            </p>
-            <Button size="lg" className="bg-primary hover:bg-primary/90">
-              <Plus className="h-5 w-5 mr-2" />
-              Start Creating
-            </Button>
-          </div>
-        </section>
       </main>
       
       <Footer />
