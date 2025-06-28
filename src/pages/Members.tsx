@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Search, Users, Film, Star } from 'lucide-react';
+import { Search, Users, Star, MessageCircle, Plus, X, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface Member {
@@ -15,17 +15,19 @@ interface Member {
   username: string;
   avatar: string;
   stats: {
-    films: number;
-    reviews: number;
+    videosRated: number;
+    comments: number;
     followers: number;
   };
   bio?: string;
   featured?: boolean;
+  isFollowing?: boolean;
 }
 
 const MembersPage = () => {
   const [members, setMembers] = useState<Member[]>([]);
   const [featuredMembers, setFeaturedMembers] = useState<Member[]>([]);
+  const [followedMembers, setFollowedMembers] = useState<Member[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredMembers, setFilteredMembers] = useState<Member[]>([]);
@@ -37,149 +39,207 @@ const MembersPage = () => {
       name: "Randy Jones",
       username: "randyjones",
       avatar: "https://i.pravatar.cc/240?img=1",
-      stats: { films: 1800, reviews: 2000, followers: 1250 },
+      stats: { videosRated: 1800, comments: 2000, followers: 1250 },
       bio: "Film enthusiast and critic",
-      featured: true
+      featured: true,
+      isFollowing: false
     },
     {
       id: "2",
       name: "Rachel Green",
       username: "rrrrrrachie",
       avatar: "https://i.pravatar.cc/240?img=2",
-      stats: { films: 350, reviews: 399, followers: 890 },
+      stats: { videosRated: 350, comments: 399, followers: 890 },
       bio: "Independent cinema lover",
-      featured: true
+      featured: true,
+      isFollowing: false
     },
     {
       id: "3",
       name: "Jordan Gustafson",
       username: "jordangustafson",
       avatar: "https://i.pravatar.cc/240?img=3",
-      stats: { films: 970, reviews: 2800, followers: 1560 },
+      stats: { videosRated: 970, comments: 2800, followers: 1560 },
       bio: "Documentary specialist",
-      featured: true
+      featured: true,
+      isFollowing: false
     },
     {
       id: "4",
       name: "Leonora Anne Mint",
       username: "leonoramint",
       avatar: "https://i.pravatar.cc/240?img=4",
-      stats: { films: 5100, reviews: 4700, followers: 2340 },
+      stats: { videosRated: 5100, comments: 4700, followers: 2340 },
       bio: "Classic film historian",
-      featured: true
+      featured: true,
+      isFollowing: false
     },
     {
       id: "5",
       name: "Kyle Turner",
       username: "kyleturner",
       avatar: "https://i.pravatar.cc/240?img=5",
-      stats: { films: 3200, reviews: 1300, followers: 1890 },
+      stats: { videosRated: 3200, comments: 1300, followers: 1890 },
       bio: "Horror and thriller expert",
-      featured: true
+      featured: true,
+      isFollowing: false
     },
     {
       id: "6",
       name: "James Schaffrillas",
       username: "schaff",
       avatar: "https://i.pravatar.cc/240?img=6",
-      stats: { films: 1300, reviews: 1100, followers: 980 },
-      bio: "Animation and family films"
+      stats: { videosRated: 1300, comments: 1100, followers: 980 },
+      bio: "Animation and family films",
+      isFollowing: false
     },
     {
       id: "7",
       name: "Tim Tantitus",
       username: "timtantitus",
       avatar: "https://i.pravatar.cc/240?img=7",
-      stats: { films: 1300, reviews: 745, followers: 650 },
-      bio: "International cinema"
+      stats: { videosRated: 1300, comments: 745, followers: 650 },
+      bio: "International cinema",
+      isFollowing: false
     },
     {
       id: "8",
       name: "Cinema Joe",
       username: "cinemajoe",
       avatar: "https://i.pravatar.cc/240?img=8",
-      stats: { films: 2000, reviews: 1400, followers: 1120 },
-      bio: "Action and adventure films"
+      stats: { videosRated: 2000, comments: 1400, followers: 1120 },
+      bio: "Action and adventure films",
+      isFollowing: false
     },
     {
       id: "9",
       name: "Karsten",
       username: "karsten",
       avatar: "https://i.pravatar.cc/240?img=9",
-      stats: { films: 2300, reviews: 1600, followers: 890 },
-      bio: "European cinema enthusiast"
+      stats: { videosRated: 2300, comments: 1600, followers: 890 },
+      bio: "European cinema enthusiast",
+      isFollowing: false
     },
     {
       id: "10",
       name: "Zoë Rose Bryant",
       username: "zoerosebryant",
       avatar: "https://i.pravatar.cc/240?img=10",
-      stats: { films: 5000, reviews: 2400, followers: 1780 },
-      bio: "Contemporary drama specialist"
+      stats: { videosRated: 5000, comments: 2400, followers: 1780 },
+      bio: "Contemporary drama specialist",
+      isFollowing: false
     },
     {
       id: "11",
       name: "Sarah Wilson",
       username: "sarahw",
       avatar: "https://i.pravatar.cc/240?img=11",
-      stats: { films: 890, reviews: 456, followers: 234 },
-      bio: "Indie film lover"
+      stats: { videosRated: 890, comments: 456, followers: 234 },
+      bio: "Indie film lover",
+      isFollowing: false
     },
     {
       id: "12",
       name: "Mike Chen",
       username: "mikeseesvideos",
       avatar: "https://i.pravatar.cc/240?img=12",
-      stats: { films: 1200, reviews: 890, followers: 567 },
-      bio: "Sci-fi and fantasy expert"
+      stats: { videosRated: 1200, comments: 890, followers: 567 },
+      bio: "Sci-fi and fantasy expert",
+      isFollowing: false
     },
     {
       id: "13",
       name: "Taylor Reed",
       username: "taylorwatches",
       avatar: "https://i.pravatar.cc/240?img=13",
-      stats: { films: 670, reviews: 234, followers: 345 },
-      bio: "Romance and comedy films"
+      stats: { videosRated: 670, comments: 234, followers: 345 },
+      bio: "Romance and comedy films",
+      isFollowing: false
     },
     {
       id: "14",
       name: "Jamie Lopez",
       username: "videocritic88",
       avatar: "https://i.pravatar.cc/240?img=14",
-      stats: { films: 1500, reviews: 1200, followers: 890 },
-      bio: "Film critic and reviewer"
+      stats: { videosRated: 1500, comments: 1200, followers: 890 },
+      bio: "Film critic and reviewer",
+      isFollowing: false
     },
     {
       id: "15",
       name: "Chris Johnson",
       username: "cj_reviews",
       avatar: "https://i.pravatar.cc/240?img=15",
-      stats: { films: 980, reviews: 567, followers: 432 },
-      bio: "Thriller and mystery films"
-    },
+      stats: { videosRated: 980, comments: 567, followers: 432 },
+      bio: "Thriller and mystery films",
+      isFollowing: false
+    }
+  ];
+
+  // Mock followed members
+  const mockFollowedMembers: Member[] = [
     {
-      id: "16",
+      id: "f1",
       name: "Emma Davis",
       username: "emmawatches",
       avatar: "https://i.pravatar.cc/240?img=16",
-      stats: { films: 1100, reviews: 678, followers: 543 },
-      bio: "Period dramas and biopics"
+      stats: { videosRated: 1100, comments: 678, followers: 543 },
+      bio: "Period dramas and biopics",
+      isFollowing: true
     },
     {
-      id: "17",
+      id: "f2",
       name: "Alex Thompson",
       username: "alexfilms",
       avatar: "https://i.pravatar.cc/240?img=17",
-      stats: { films: 750, reviews: 345, followers: 289 },
-      bio: "Experimental cinema"
+      stats: { videosRated: 750, comments: 345, followers: 289 },
+      bio: "Experimental cinema",
+      isFollowing: true
     },
     {
-      id: "18",
+      id: "f3",
       name: "Maria Garcia",
       username: "mariacinema",
       avatar: "https://i.pravatar.cc/240?img=18",
-      stats: { films: 1300, reviews: 890, followers: 678 },
-      bio: "Latin American cinema"
+      stats: { videosRated: 1300, comments: 890, followers: 678 },
+      bio: "Latin American cinema",
+      isFollowing: true
+    },
+    {
+      id: "f4",
+      name: "David Kim",
+      username: "davidwatches",
+      avatar: "https://i.pravatar.cc/240?img=19",
+      stats: { videosRated: 890, comments: 456, followers: 234 },
+      bio: "Korean cinema specialist",
+      isFollowing: true
+    },
+    {
+      id: "f5",
+      name: "Lisa Chen",
+      username: "lisareviews",
+      avatar: "https://i.pravatar.cc/240?img=20",
+      stats: { videosRated: 1200, comments: 890, followers: 567 },
+      bio: "Animation enthusiast",
+      isFollowing: true
+    },
+    {
+      id: "f6",
+      name: "Tom Wilson",
+      username: "tomwatches",
+      avatar: "https://i.pravatar.cc/240?img=21",
+      stats: { videosRated: 670, comments: 234, followers: 345 },
+      bio: "Horror film expert",
+      isFollowing: true
+    },
+    {
+      id: "f7",
+      name: "Anna Rodriguez",
+      username: "annafilms",
+      avatar: "https://i.pravatar.cc/240?img=22",
+      stats: { videosRated: 1500, comments: 1200, followers: 890 },
+      bio: "Documentary lover",
+      isFollowing: true
     }
   ];
 
@@ -192,6 +252,7 @@ const MembersPage = () => {
       setFeaturedMembers(featured);
       setMembers(regular);
       setFilteredMembers(regular);
+      setFollowedMembers(mockFollowedMembers);
       setLoading(false);
     }, 1000);
 
@@ -213,69 +274,94 @@ const MembersPage = () => {
     return num.toString();
   };
 
-  const MemberCard = ({ member, featured = false }: { member: Member; featured?: boolean }) => (
+  const handleFollow = (memberId: string) => {
+    setMembers(prev => prev.map(member => 
+      member.id === memberId 
+        ? { ...member, isFollowing: !member.isFollowing }
+        : member
+    ));
+    setFeaturedMembers(prev => prev.map(member => 
+      member.id === memberId 
+        ? { ...member, isFollowing: !member.isFollowing }
+        : member
+    ));
+  };
+
+  const handleUnfollow = (memberId: string) => {
+    setFollowedMembers(prev => prev.filter(member => member.id !== memberId));
+  };
+
+  const MemberCard = ({ member, featured = false, isFollowed = false }: { member: Member; featured?: boolean; isFollowed?: boolean }) => (
     <Card className={`group overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${featured ? 'border-primary/20' : ''}`}>
-      <CardContent className="p-6">
-        <Link to={`/user/${member.username}`} className="block">
-          <div className="flex flex-col items-center text-center space-y-4">
-            <div className="relative">
-              <Avatar className="h-30 w-30 border-4 border-white shadow-md transition-transform duration-300 group-hover:scale-105">
-                <AvatarImage src={member.avatar} alt={member.name} />
-                <AvatarFallback className="text-lg font-semibold">
-                  {member.name.split(' ').map(n => n[0]).join('')}
-                </AvatarFallback>
-              </Avatar>
-              {featured && (
-                <div className="absolute -top-1 -right-1 bg-primary text-primary-foreground rounded-full p-1">
-                  <Star className="h-3 w-3 fill-current" />
-                </div>
-              )}
-            </div>
+      <CardContent className="p-4">
+        <div className="flex flex-col items-center text-center space-y-3">
+          <div className="relative">
+            <Avatar className={`${featured ? 'h-24 w-24' : 'h-16 w-16'} border-2 border-white shadow-md transition-transform duration-300 group-hover:scale-105`}>
+              <AvatarImage src={member.avatar} alt={member.name} />
+              <AvatarFallback className={`${featured ? 'text-lg' : 'text-sm'} font-semibold`}>
+                {member.name.split(' ').map(n => n[0]).join('')}
+              </AvatarFallback>
+            </Avatar>
             
-            <div className="space-y-2">
-              <h3 className="text-lg font-bold text-gray-900 group-hover:text-primary transition-colors">
+            {/* Follow/Unfollow Button */}
+            <button
+              onClick={() => isFollowed ? handleUnfollow(member.id) : handleFollow(member.id)}
+              className={`absolute -bottom-1 -right-1 rounded-full p-1.5 shadow-md transition-all duration-200 hover:scale-110 ${
+                member.isFollowing || isFollowed
+                  ? 'bg-red-500 hover:bg-red-600 text-white'
+                  : 'bg-primary hover:bg-primary/90 text-primary-foreground'
+              }`}
+            >
+              {member.isFollowing || isFollowed ? (
+                <X className="h-3 w-3" />
+              ) : (
+                <Plus className="h-3 w-3" />
+              )}
+            </button>
+            
+            {featured && (
+              <div className="absolute -top-1 -left-1 bg-primary text-primary-foreground rounded-full p-1">
+                <Star className="h-3 w-3 fill-current" />
+              </div>
+            )}
+          </div>
+          
+          <div className="space-y-1 min-h-[3rem] flex flex-col justify-center">
+            <Link to={`/user/${member.username}`}>
+              <h3 className={`${featured ? 'text-base' : 'text-sm'} font-bold text-gray-900 group-hover:text-primary transition-colors line-clamp-1`}>
                 {member.name}
               </h3>
-              <p className="text-sm text-gray-500">@{member.username}</p>
-              {member.bio && (
-                <p className="text-sm text-gray-600 line-clamp-2">{member.bio}</p>
-              )}
+            </Link>
+            <p className="text-xs text-gray-500">@{member.username}</p>
+          </div>
+          
+          <div className="flex items-center justify-center space-x-3 text-xs text-gray-500 w-full">
+            <div className="flex items-center space-x-1">
+              <Star className="h-3 w-3 fill-current text-yellow-500" />
+              <span>{formatNumber(member.stats.videosRated)}</span>
             </div>
-            
-            <div className="flex items-center justify-center space-x-4 text-xs text-gray-500 w-full">
-              <div className="flex items-center space-x-1">
-                <Film className="h-3 w-3" />
-                <span>{formatNumber(member.stats.films)}</span>
-              </div>
-              <div className="flex items-center space-x-1">
-                <Star className="h-3 w-3" />
-                <span>{formatNumber(member.stats.reviews)}</span>
-              </div>
-              <div className="flex items-center space-x-1">
-                <Users className="h-3 w-3" />
-                <span>{formatNumber(member.stats.followers)}</span>
-              </div>
+            <div className="flex items-center space-x-1">
+              <MessageCircle className="h-3 w-3" />
+              <span>{formatNumber(member.stats.comments)}</span>
             </div>
           </div>
-        </Link>
+        </div>
       </CardContent>
     </Card>
   );
 
-  const MemberCardSkeleton = () => (
+  const MemberCardSkeleton = ({ featured = false }: { featured?: boolean }) => (
     <Card className="overflow-hidden">
-      <CardContent className="p-6">
-        <div className="flex flex-col items-center text-center space-y-4">
-          <Skeleton className="h-30 w-30 rounded-full" />
-          <div className="space-y-2 w-full">
-            <Skeleton className="h-5 w-32 mx-auto" />
-            <Skeleton className="h-4 w-24 mx-auto" />
-            <Skeleton className="h-4 w-40 mx-auto" />
+      <CardContent className="p-4">
+        <div className="flex flex-col items-center text-center space-y-3">
+          <Skeleton className={`${featured ? 'h-24 w-24' : 'h-16 w-16'} rounded-full`} />
+          <div className="space-y-1 w-full">
+            <Skeleton className="h-4 w-20 mx-auto" />
+            <Skeleton className="h-3 w-16 mx-auto" />
           </div>
-          <div className="flex items-center justify-center space-x-4 w-full">
-            <Skeleton className="h-4 w-12" />
-            <Skeleton className="h-4 w-12" />
-            <Skeleton className="h-4 w-12" />
+          <div className="flex items-center justify-center space-x-3 w-full">
+            <Skeleton className="h-3 w-8" />
+            <Skeleton className="h-3 w-8" />
           </div>
         </div>
       </CardContent>
@@ -319,6 +405,31 @@ const MembersPage = () => {
           </div>
         </div>
 
+        {/* People You Follow section */}
+        {followedMembers.length > 0 && (
+          <section className="py-8 bg-white border-b">
+            <div className="container mx-auto px-4">
+              <div className="flex items-center justify-between mb-6">
+                <h2 className="text-xl font-bold text-gray-900">People You Follow</h2>
+                {followedMembers.length > 5 && (
+                  <Button variant="outline" size="sm" className="flex items-center gap-2">
+                    See All
+                    <ChevronRight className="h-4 w-4" />
+                  </Button>
+                )}
+              </div>
+              
+              <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+                {followedMembers.slice(0, 5).map((member) => (
+                  <div key={member.id} className="flex-shrink-0 w-40">
+                    <MemberCard member={member} isFollowed={true} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         {/* Featured members section */}
         {featuredMembers.length > 0 && (
           <section className="py-12">
@@ -329,13 +440,13 @@ const MembersPage = () => {
               </div>
               
               {loading ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                   {Array.from({ length: 5 }).map((_, index) => (
-                    <MemberCardSkeleton key={index} />
+                    <MemberCardSkeleton key={index} featured={true} />
                   ))}
                 </div>
               ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                   {featuredMembers.map((member) => (
                     <MemberCard key={member.id} member={member} featured={true} />
                   ))}
@@ -363,8 +474,8 @@ const MembersPage = () => {
             </div>
             
             {loading ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                {Array.from({ length: 12 }).map((_, index) => (
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                {Array.from({ length: 15 }).map((_, index) => (
                   <MemberCardSkeleton key={index} />
                 ))}
               </div>
@@ -391,7 +502,7 @@ const MembersPage = () => {
                 )}
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                 {filteredMembers.map((member) => (
                   <MemberCard key={member.id} member={member} />
                 ))}
