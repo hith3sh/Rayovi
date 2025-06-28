@@ -8,6 +8,8 @@ import ProfilePage from "./pages/Profile";
 import MembersPage from "./pages/Members";
 import ListsPage from "./pages/Lists";
 import VideosPage from "./pages/Videos";
+import AuthPage from "./pages/Auth";
+import AuthCallbackPage from "./pages/AuthCallback";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +26,8 @@ const App = () => (
           <Route path="/members" element={<MembersPage />} />
           <Route path="/lists" element={<ListsPage />} />
           <Route path="/films" element={<VideosPage />} />
+          <Route path="/auth" element={<AuthPage />} />
+          <Route path="/auth/callback" element={<AuthCallbackPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

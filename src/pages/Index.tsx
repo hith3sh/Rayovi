@@ -5,6 +5,7 @@ import RecentActivity from '@/components/RecentActivity';
 import PopularVideos from '@/components/PopularVideos';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import { Link } from 'react-router-dom';
 
 const Index = () => {
   // Mock data for videos
@@ -155,7 +156,7 @@ const Index = () => {
   ];
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-background">
       <Navbar />
       
       <main className="flex-1">
@@ -174,9 +175,11 @@ const Index = () => {
                 The social network for video lovers. Create a profile to track and rate your favorite YouTube videos, write reviews, make lists, and connect with other content enthusiasts.
               </p>
               <div className="space-x-4">
-                <Button size="lg" className="btn-letterboxd">
-                  Get started — it's free!
-                </Button>
+                <Link to="/auth">
+                  <Button size="lg" className="btn-letterboxd">
+                    Get started — it's free!
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
@@ -197,9 +200,11 @@ const Index = () => {
                 <p className="mb-6 text-muted-foreground">
                   Keep track of every video you've ever watched or just start from the day you join. Rate, review and tag as you go.
                 </p>
-                <Button className="btn-letterboxd w-full">
-                  Create an account
-                </Button>
+                <Link to="/auth">
+                  <Button className="btn-letterboxd w-full">
+                    Create an account
+                  </Button>
+                </Link>
               </div>
               
               <RecentActivity activities={activities} />
