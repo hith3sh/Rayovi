@@ -517,11 +517,11 @@ const ListsPage = () => {
   };
 
   const BigListCard = ({ list }: { list: VideoList }) => (
-    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-xl shadow-lg">
+    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-xl shadow-lg card-letterboxd">
       <Link to={`/lists/${list.id}`}>
         <CardContent className="p-0">
           {/* Large prominent image section */}
-          <div className="relative h-48 overflow-hidden bg-gray-100">
+          <div className="relative h-48 overflow-hidden bg-muted">
             <div className="relative w-full h-full">
               {list.thumbnails.slice(0, 4).map((thumbnail, index) => (
                 <div 
@@ -549,10 +549,10 @@ const ListsPage = () => {
           {/* Compact content section */}
           <div className="p-4 space-y-3">
             <div>
-              <h3 className="text-lg font-bold text-gray-900 group-hover:text-primary transition-colors line-clamp-1">
+              <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors line-clamp-1">
                 {list.title}
               </h3>
-              <p className="text-sm text-gray-600 line-clamp-2 mt-1">
+              <p className="text-sm text-muted-foreground line-clamp-2 mt-1">
                 {list.description}
               </p>
             </div>
@@ -566,7 +566,7 @@ const ListsPage = () => {
                     {list.creator.name.split(' ').map(n => n[0]).join('')}
                   </AvatarFallback>
                 </Avatar>
-                <span className="text-sm font-medium text-gray-700">{list.creator.username}</span>
+                <span className="text-sm font-medium text-muted-foreground">{list.creator.username}</span>
               </div>
               
               {list.category && (
@@ -576,7 +576,7 @@ const ListsPage = () => {
               )}
             </div>
             
-            <div className="flex items-center space-x-4 text-xs text-gray-500">
+            <div className="flex items-center space-x-4 text-xs text-muted-foreground">
               <div className="flex items-center space-x-1">
                 <Film className="h-3 w-3" />
                 <span>{formatNumber(list.videoCount)} videos</span>
@@ -597,7 +597,7 @@ const ListsPage = () => {
   );
 
   const RegularListCard = ({ list }: { list: VideoList }) => (
-    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 card-letterboxd">
       <Link to={`/lists/${list.id}`}>
         <CardContent className="p-4">
           <div className="flex gap-4">
@@ -624,10 +624,10 @@ const ListsPage = () => {
             {/* Content */}
             <div className="flex-1 space-y-2">
               <div>
-                <h3 className="text-base font-bold text-gray-900 group-hover:text-primary transition-colors line-clamp-1">
+                <h3 className="text-base font-bold text-foreground group-hover:text-primary transition-colors line-clamp-1">
                   {list.title}
                 </h3>
-                <p className="text-xs text-gray-600 line-clamp-2">
+                <p className="text-xs text-muted-foreground line-clamp-2">
                   {list.description}
                 </p>
               </div>
@@ -641,11 +641,11 @@ const ListsPage = () => {
                       {list.creator.name.split(' ').map(n => n[0]).join('')}
                     </AvatarFallback>
                   </Avatar>
-                  <span className="text-xs text-gray-500 font-medium">{list.creator.username}</span>
+                  <span className="text-xs text-muted-foreground font-medium">{list.creator.username}</span>
                 </div>
               </div>
               
-              <div className="flex items-center justify-between text-xs text-gray-500">
+              <div className="flex items-center justify-between text-xs text-muted-foreground">
                 <div className="flex items-center space-x-3">
                   <div className="flex items-center space-x-1">
                     <Film className="h-3 w-3" />
@@ -661,7 +661,7 @@ const ListsPage = () => {
                   </div>
                 </div>
                 {list.category && (
-                  <span className="bg-gray-100 px-2 py-1 rounded text-xs">
+                  <span className="bg-muted px-2 py-1 rounded text-xs">
                     {list.category}
                   </span>
                 )}
@@ -675,7 +675,7 @@ const ListsPage = () => {
 
   // Vertical list card for Recently Liked section
   const VerticalListCard = ({ list }: { list: VideoList }) => (
-    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-lg border-l-4 border-l-transparent hover:border-l-primary">
+    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-lg border-l-4 border-l-transparent hover:border-l-primary card-letterboxd">
       <Link to={`/lists/${list.id}`}>
         <CardContent className="p-6">
           <div className="flex gap-6">
@@ -703,7 +703,7 @@ const ListsPage = () => {
             {/* Content */}
             <div className="flex-1 space-y-3">
               <div>
-                <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors">
+                <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
                   {list.title}
                 </h3>
                 <div className="flex items-center space-x-2 mt-2">
@@ -713,8 +713,8 @@ const ListsPage = () => {
                       {list.creator.name.split(' ').map(n => n[0]).join('')}
                     </AvatarFallback>
                   </Avatar>
-                  <span className="text-sm font-medium text-gray-600">{list.creator.username}</span>
-                  <div className="flex items-center space-x-4 text-sm text-gray-500">
+                  <span className="text-sm font-medium text-muted-foreground">{list.creator.username}</span>
+                  <div className="flex items-center space-x-4 text-sm text-muted-foreground">
                     <span>{formatNumber(list.videoCount)} films</span>
                     <div className="flex items-center space-x-1">
                       <Heart className="h-4 w-4 fill-current text-red-500" />
@@ -729,7 +729,7 @@ const ListsPage = () => {
               </div>
               
               {list.description && (
-                <p className="text-gray-600 line-clamp-2 leading-relaxed">
+                <p className="text-muted-foreground line-clamp-2 leading-relaxed">
                   {list.description}
                 </p>
               )}
@@ -741,9 +741,9 @@ const ListsPage = () => {
   );
 
   const BigListCardSkeleton = () => (
-    <Card className="overflow-hidden shadow-lg">
+    <Card className="overflow-hidden shadow-lg card-letterboxd">
       <CardContent className="p-0">
-        <div className="h-48 bg-gray-200 relative">
+        <div className="h-48 bg-muted relative">
           {Array.from({ length: 4 }).map((_, index) => (
             <Skeleton 
               key={index} 
@@ -779,7 +779,7 @@ const ListsPage = () => {
   );
 
   const RegularListCardSkeleton = () => (
-    <Card className="overflow-hidden">
+    <Card className="overflow-hidden card-letterboxd">
       <CardContent className="p-4">
         <div className="flex gap-4">
           <div className="relative flex-shrink-0 w-[88px] h-[48px]">
@@ -818,7 +818,7 @@ const ListsPage = () => {
   );
 
   const VerticalListCardSkeleton = () => (
-    <Card className="overflow-hidden">
+    <Card className="overflow-hidden card-letterboxd">
       <CardContent className="p-6">
         <div className="flex gap-6">
           <div className="relative flex-shrink-0 w-[120px] h-[80px]">
@@ -854,21 +854,21 @@ const ListsPage = () => {
   );
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-background">
       <Navbar />
       
-      <main className="flex-1 bg-gray-50">
-        {/* Header section */}
-        <div className="bg-gray-900 text-white">
+      <main className="flex-1">
+        {/* Header section - Now seamlessly integrated with dark theme */}
+        <div className="bg-background">
           <div className="container mx-auto px-4 py-16">
             <div className="text-center space-y-6">
-              <h1 className="text-4xl md:text-5xl font-bold">
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground">
                 Collect, curate, and share. Lists are the perfect way to group videos.
               </h1>
-              <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Discover handpicked collections of the best videos on the internet, or create your own to share with the community.
               </p>
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
+              <Button size="lg" className="btn-letterboxd">
                 <Plus className="h-5 w-5 mr-2" />
                 Start your own list
               </Button>
@@ -877,30 +877,30 @@ const ListsPage = () => {
         </div>
 
         {/* Search section */}
-        <div className="bg-white border-b">
+        <div className="bg-background border-b border-border">
           <div className="container mx-auto px-4 py-6">
             <div className="max-w-md mx-auto">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
                   type="search"
                   placeholder="Search lists..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 pr-4 py-2 w-full"
+                  className="pl-10 pr-4 py-2 w-full input-letterboxd"
                 />
               </div>
             </div>
           </div>
         </div>
 
-        {/* Popular this week section - Compact Cards with Prominent Images */}
+        {/* Popular this week section */}
         {popularLists.length > 0 && (
-          <section className="py-12 bg-white">
+          <section className="py-12 bg-background">
             <div className="container mx-auto px-4">
               <div className="flex items-center justify-between mb-8">
-                <h2 className="text-2xl font-bold text-gray-900">Popular This Week</h2>
-                <Button variant="ghost" className="flex items-center gap-2 text-primary">
+                <h2 className="text-2xl font-bold text-foreground">Popular This Week</h2>
+                <Button variant="ghost" className="flex items-center gap-2 text-primary btn-letterboxd-ghost">
                   More
                   <ChevronRight className="h-4 w-4" />
                 </Button>
@@ -925,11 +925,11 @@ const ListsPage = () => {
 
         {/* Featured lists section */}
         {featuredLists.length > 0 && (
-          <section className="py-12">
+          <section className="py-12 bg-card">
             <div className="container mx-auto px-4">
               <div className="flex items-center justify-between mb-8">
-                <h2 className="text-2xl font-bold text-gray-900">Featured Lists</h2>
-                <Button variant="ghost" className="flex items-center gap-2 text-primary">
+                <h2 className="text-2xl font-bold text-foreground">Featured Lists</h2>
+                <Button variant="ghost" className="flex items-center gap-2 text-primary btn-letterboxd-ghost">
                   All
                   <ChevronRight className="h-4 w-4" />
                 </Button>
@@ -952,13 +952,13 @@ const ListsPage = () => {
           </section>
         )}
 
-        {/* Recently liked section - Vertical Layout */}
+        {/* Recently liked section */}
         {recentlyLikedLists.length > 0 && (
-          <section className="py-12 bg-white">
+          <section className="py-12 bg-background">
             <div className="container mx-auto px-4">
               <div className="flex items-center justify-between mb-8">
-                <h2 className="text-2xl font-bold text-gray-900">Recently Liked</h2>
-                <Button variant="ghost" className="flex items-center gap-2 text-primary">
+                <h2 className="text-2xl font-bold text-foreground">Recently Liked</h2>
+                <Button variant="ghost" className="flex items-center gap-2 text-primary btn-letterboxd-ghost">
                   View All
                   <ChevronRight className="h-4 w-4" />
                 </Button>
