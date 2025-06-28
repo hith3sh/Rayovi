@@ -351,18 +351,19 @@ const ListsPage = () => {
   };
 
   const BigListCard = ({ list }: { list: VideoList }) => (
-    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2 border-0 shadow-lg">
+    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-xl border-2 border-transparent hover:border-primary/60 shadow-lg">
       <Link to={`/lists/${list.id}`}>
-        <CardContent className="p-6">
-          <div className="flex gap-6">
-            {/* Card stack thumbnail display */}
-            <div className="relative flex-shrink-0 w-[128px] h-[56px]">
+        <CardContent className="p-0">
+          {/* Large prominent image section */}
+          <div className="relative h-48 overflow-hidden">
+            <div className="relative w-full h-full">
               {list.thumbnails.slice(0, 4).map((thumbnail, index) => (
                 <div 
                   key={index} 
-                  className="absolute w-20 h-14 overflow-hidden rounded-md transition-transform duration-300 group-hover:scale-105"
+                  className="absolute w-24 h-16 overflow-hidden rounded-md shadow-lg transition-transform duration-300"
                   style={{ 
-                    left: `${index * 16}px`, 
+                    left: `${20 + index * 20}px`,
+                    top: `${20 + index * 8}px`,
                     zIndex: list.thumbnails.length - index 
                   }}
                 >
@@ -371,61 +372,60 @@ const ListsPage = () => {
                     alt={list.title}
                     className="h-full w-full object-cover"
                   />
-                  {index === 0 && (
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-                      <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <Play className="h-4 w-4 text-white fill-current" />
-                      </div>
-                    </div>
-                  )}
                 </div>
               ))}
+              
+              {/* Overlay with play button */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center">
+                <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50 rounded-full p-3">
+                  <Play className="h-6 w-6 text-white fill-current" />
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Compact content section */}
+          <div className="p-4 space-y-3">
+            <div>
+              <h3 className="text-lg font-bold text-gray-900 group-hover:text-primary transition-colors line-clamp-1">
+                {list.title}
+              </h3>
+              <p className="text-sm text-gray-600 line-clamp-2 mt-1">
+                {list.description}
+              </p>
             </div>
             
-            {/* Content */}
-            <div className="flex-1 space-y-3">
-              <div>
-                <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors line-clamp-1">
-                  {list.title}
-                </h3>
-                <p className="text-sm text-gray-600 line-clamp-2 mt-1">
-                  {list.description}
-                </p>
+            {/* Creator and stats */}
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-2">
+                <Avatar className="h-6 w-6">
+                  <AvatarImage src={list.creator.avatar} alt={list.creator.name} />
+                  <AvatarFallback className="text-xs">
+                    {list.creator.name.split(' ').map(n => n[0]).join('')}
+                  </AvatarFallback>
+                </Avatar>
+                <span className="text-sm font-medium text-gray-700">{list.creator.username}</span>
               </div>
               
-              {/* Creator and stats */}
-              <div className="flex items-center justify-between">
-                <div className="flex items-center space-x-3">
-                  <Avatar className="h-8 w-8">
-                    <AvatarImage src={list.creator.avatar} alt={list.creator.name} />
-                    <AvatarFallback className="text-xs">
-                      {list.creator.name.split(' ').map(n => n[0]).join('')}
-                    </AvatarFallback>
-                  </Avatar>
-                  <div>
-                    <p className="text-sm font-medium text-gray-900">{list.creator.username}</p>
-                    <div className="flex items-center space-x-4 text-xs text-gray-500">
-                      <div className="flex items-center space-x-1">
-                        <Film className="h-3 w-3" />
-                        <span>{formatNumber(list.videoCount)} videos</span>
-                      </div>
-                      <div className="flex items-center space-x-1">
-                        <Heart className="h-3 w-3" />
-                        <span>{formatNumber(list.likes)}</span>
-                      </div>
-                      <div className="flex items-center space-x-1">
-                        <MessageCircle className="h-3 w-3" />
-                        <span>{formatNumber(list.comments)}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                {list.category && (
-                  <span className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium">
-                    {list.category}
-                  </span>
-                )}
+              {list.category && (
+                <span className="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-medium">
+                  {list.category}
+                </span>
+              )}
+            </div>
+            
+            <div className="flex items-center space-x-4 text-xs text-gray-500">
+              <div className="flex items-center space-x-1">
+                <Film className="h-3 w-3" />
+                <span>{formatNumber(list.videoCount)} videos</span>
+              </div>
+              <div className="flex items-center space-x-1">
+                <Heart className="h-3 w-3" />
+                <span>{formatNumber(list.likes)}</span>
+              </div>
+              <div className="flex items-center space-x-1">
+                <MessageCircle className="h-3 w-3" />
+                <span>{formatNumber(list.comments)}</span>
               </div>
             </div>
           </div>
@@ -513,39 +513,36 @@ const ListsPage = () => {
 
   const BigListCardSkeleton = () => (
     <Card className="overflow-hidden shadow-lg">
-      <CardContent className="p-6">
-        <div className="flex gap-6">
-          <div className="relative flex-shrink-0 w-[128px] h-[56px]">
-            {Array.from({ length: 4 }).map((_, index) => (
-              <Skeleton 
-                key={index} 
-                className="absolute w-20 h-14 rounded-md" 
-                style={{ 
-                  left: `${index * 16}px`, 
-                  zIndex: 4 - index 
-                }}
-              />
-            ))}
+      <CardContent className="p-0">
+        <div className="h-48 bg-gray-200 relative">
+          {Array.from({ length: 4 }).map((_, index) => (
+            <Skeleton 
+              key={index} 
+              className="absolute w-24 h-16 rounded-md" 
+              style={{ 
+                left: `${20 + index * 20}px`,
+                top: `${20 + index * 8}px`,
+                zIndex: 4 - index 
+              }}
+            />
+          ))}
+        </div>
+        <div className="p-4 space-y-3">
+          <div>
+            <Skeleton className="h-5 w-3/4" />
+            <Skeleton className="h-4 w-full mt-2" />
           </div>
-          <div className="flex-1 space-y-3">
-            <div>
-              <Skeleton className="h-6 w-3/4" />
-              <Skeleton className="h-4 w-full mt-2" />
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <Skeleton className="h-6 w-6 rounded-full" />
+              <Skeleton className="h-4 w-20" />
             </div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-3">
-                <Skeleton className="h-8 w-8 rounded-full" />
-                <div>
-                  <Skeleton className="h-4 w-20" />
-                  <div className="flex items-center space-x-4 mt-1">
-                    <Skeleton className="h-3 w-12" />
-                    <Skeleton className="h-3 w-8" />
-                    <Skeleton className="h-3 w-8" />
-                  </div>
-                </div>
-              </div>
-              <Skeleton className="h-6 w-16 rounded-full" />
-            </div>
+            <Skeleton className="h-5 w-16 rounded-full" />
+          </div>
+          <div className="flex items-center space-x-4">
+            <Skeleton className="h-3 w-12" />
+            <Skeleton className="h-3 w-8" />
+            <Skeleton className="h-3 w-8" />
           </div>
         </div>
       </CardContent>
@@ -632,7 +629,7 @@ const ListsPage = () => {
           </div>
         </div>
 
-        {/* Popular this week section - Big Cards */}
+        {/* Popular this week section - Compact Cards with Prominent Images */}
         {popularLists.length > 0 && (
           <section className="py-12 bg-white">
             <div className="container mx-auto px-4">
@@ -645,13 +642,13 @@ const ListsPage = () => {
               </div>
               
               {loading ? (
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                   {Array.from({ length: 4 }).map((_, index) => (
                     <BigListCardSkeleton key={index} />
                   ))}
                 </div>
               ) : (
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                   {popularLists.map((list) => (
                     <BigListCard key={list.id} list={list} />
                   ))}
