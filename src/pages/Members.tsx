@@ -373,17 +373,12 @@ const MembersPage = () => {
       <Navbar />
       
       <main className="flex-1">
-        {/* Header section */}
-        <div className="bg-background border-b border-border">
-          <div className="container mx-auto px-4 py-12">
-            <div className="text-center space-y-4">
-              <h1 className="text-4xl font-bold text-foreground">
-                Video lovers, critics and friends — find popular members.
-              </h1>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Connect with fellow video enthusiasts, discover new perspectives, and build your community of content lovers.
-              </p>
-            </div>
+        {/* Simple header section - minimal design */}
+        <div className="bg-background py-8">
+          <div className="container mx-auto px-4 text-center">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
+              Video lovers, critics and friends — find popular members.
+            </h1>
           </div>
         </div>
 
