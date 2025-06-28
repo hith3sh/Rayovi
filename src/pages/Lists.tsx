@@ -199,115 +199,281 @@ const ListsPage = () => {
       category: "Viral",
       createdAt: "2024-03-10"
     },
-    // Recently Liked Lists
+    // Recently Liked Lists - Expanded with more content
     {
       id: "r1",
-      title: "Tiny Desk–Style Performances",
-      description: "Intimate musical performances that capture the soul",
+      title: "Every Horror Film Ever Made",
+      description: "The definitive list of every horror title I could find from IMDB and Letterboxd. This list spans from 1895-present day....",
       creator: {
-        name: "Maria Lopez",
-        username: "mariamusic",
+        name: "Wolfman07",
+        username: "wolfman07",
         avatar: "https://i.pravatar.cc/150?img=9"
       },
-      videoCount: 34,
-      likes: 2340,
+      videoCount: 66639,
+      likes: 1900,
       views: 12800,
-      comments: 345,
+      comments: 56,
       thumbnails: [
         "https://i.ytimg.com/vi/kJp4CFGGQkI/maxresdefault.jpg",
         "https://i.ytimg.com/vi/XvlO5SBG8hM/maxresdefault.jpg",
-        "https://i.ytimg.com/vi/MzPrsmk0pnA/maxresdefault.jpg"
+        "https://i.ytimg.com/vi/MzPrsmk0pnA/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/7ku5YJtfH_0/maxresdefault.jpg"
       ],
-      category: "Music",
+      category: "Horror",
       createdAt: "2024-10-22",
       recentlyLiked: true
     },
     {
       id: "r2",
-      title: "Explained in 5 Minutes",
-      description: "Complex topics made simple and digestible",
+      title: "catálogo • nicho",
+      description: "catálogo de filmes disponíveis no perfil @nichodrive. links nas notas de cada filme.",
       creator: {
-        name: "Chris Wilson",
-        username: "chrisexplains",
+        name: "manel",
+        username: "manel",
         avatar: "https://i.pravatar.cc/150?img=10"
       },
-      videoCount: 89,
-      likes: 4560,
+      videoCount: 255,
+      likes: 1800,
       views: 28900,
-      comments: 1230,
+      comments: 5,
       thumbnails: [
         "https://i.ytimg.com/vi/xWPUJDG4Gk4/maxresdefault.jpg",
         "https://i.ytimg.com/vi/WJ3-F02-F_Y/maxresdefault.jpg",
-        "https://i.ytimg.com/vi/HG6LRH-kJQ0/maxresdefault.jpg"
+        "https://i.ytimg.com/vi/HG6LRH-kJQ0/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/UBMk30rjy0o/maxresdefault.jpg"
       ],
-      category: "Educational",
+      category: "Catalog",
       createdAt: "2024-11-08",
       recentlyLiked: true
     },
     {
       id: "r3",
+      title: "cozy",
+      description: "",
+      creator: {
+        name: "allie ☆⋆｡‖",
+        username: "allie",
+        avatar: "https://i.pravatar.cc/150?img=11"
+      },
+      videoCount: 40,
+      likes: 1,
+      views: 17600,
+      comments: 0,
+      thumbnails: [
+        "https://i.ytimg.com/vi/NWONeJKn6kc/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/XwfzqCDuQCQ/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/j5-yKhDd64s/maxresdefault.jpg"
+      ],
+      category: "Mood",
+      createdAt: "2024-10-30",
+      recentlyLiked: true
+    },
+    {
+      id: "r4",
+      title: "Tiny Desk–Style Performances",
+      description: "Intimate musical performances that capture the soul and showcase raw talent in stripped-down settings",
+      creator: {
+        name: "Maria Lopez",
+        username: "mariamusic",
+        avatar: "https://i.pravatar.cc/150?img=12"
+      },
+      videoCount: 34,
+      likes: 2340,
+      views: 34500,
+      comments: 345,
+      thumbnails: [
+        "https://i.ytimg.com/vi/9vz06QO3UkQ/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/jJpIzr2sCDE/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/kJp4CFGGQkI/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/XvlO5SBG8hM/maxresdefault.jpg"
+      ],
+      category: "Music",
+      createdAt: "2024-11-03",
+      recentlyLiked: true
+    },
+    {
+      id: "r5",
+      title: "Explained in 5 Minutes",
+      description: "Complex topics made simple and digestible for curious minds who want to learn quickly",
+      creator: {
+        name: "Chris Wilson",
+        username: "chrisexplains",
+        avatar: "https://i.pravatar.cc/150?img=13"
+      },
+      videoCount: 89,
+      likes: 4560,
+      views: 15600,
+      comments: 1230,
+      thumbnails: [
+        "https://i.ytimg.com/vi/HG6LRH-kJQ0/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/UBMk30rjy0o/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/NWONeJKn6kc/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/XwfzqCDuQCQ/maxresdefault.jpg"
+      ],
+      category: "Educational",
+      createdAt: "2024-10-15",
+      recentlyLiked: true
+    },
+    {
+      id: "r6",
       title: "Tech I Actually Understood",
-      description: "Technology videos that don't make your brain hurt",
+      description: "Technology videos that don't make your brain hurt and actually explain things in human terms",
       creator: {
         name: "Lisa Chen",
         username: "lisatech",
-        avatar: "https://i.pravatar.cc/150?img=11"
+        avatar: "https://i.pravatar.cc/150?img=14"
       },
       videoCount: 45,
       likes: 3210,
       views: 17600,
       comments: 567,
       thumbnails: [
-        "https://i.ytimg.com/vi/NWONeJKn6kc/maxresdefault.jpg",
-        "https://i.ytimg.com/vi/XwfzqCDuQCQ/maxresdefault.jpg",
-        "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+        "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/j5-yKhDd64s/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/9vz06QO3UkQ/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/jJpIzr2sCDE/maxresdefault.jpg"
       ],
       category: "Tech",
       createdAt: "2024-10-30",
       recentlyLiked: true
     },
     {
-      id: "r4",
+      id: "r7",
       title: "Chaotic Energy Only",
-      description: "Pure, unfiltered chaos in video form",
+      description: "Pure, unfiltered chaos in video form. Warning: may cause uncontrollable laughter",
       creator: {
         name: "Tyler Brooks",
         username: "tylerchaos",
-        avatar: "https://i.pravatar.cc/150?img=12"
+        avatar: "https://i.pravatar.cc/150?img=15"
       },
       videoCount: 56,
       likes: 6780,
       views: 34500,
       comments: 1890,
       thumbnails: [
-        "https://i.ytimg.com/vi/9vz06QO3UkQ/maxresdefault.jpg",
-        "https://i.ytimg.com/vi/jJpIzr2sCDE/maxresdefault.jpg",
-        "https://i.ytimg.com/vi/kJp4CFGGQkI/maxresdefault.jpg"
+        "https://i.ytimg.com/vi/MzPrsmk0pnA/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/7ku5YJtfH_0/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/xWPUJDG4Gk4/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/WJ3-F02-F_Y/maxresdefault.jpg"
       ],
       category: "Comedy",
       createdAt: "2024-11-03",
       recentlyLiked: true
     },
     {
-      id: "r5",
+      id: "r8",
       title: "The Greatest Hits",
-      description: "Timeless classics that never get old",
+      description: "Timeless classics that never get old and deserve to be watched again and again",
       creator: {
         name: "Alex Thompson",
         username: "alexfilms",
-        avatar: "https://i.pravatar.cc/150?img=7"
+        avatar: "https://i.pravatar.cc/150?img=16"
       },
       videoCount: 50,
       likes: 2890,
       views: 15600,
       comments: 423,
       thumbnails: [
-        "https://i.ytimg.com/vi/HG6LRH-kJQ0/maxresdefault.jpg",
-        "https://i.ytimg.com/vi/UBMk30rjy0o/maxresdefault.jpg",
-        "https://i.ytimg.com/vi/NWONeJKn6kc/maxresdefault.jpg"
+        "https://i.ytimg.com/vi/kJp4CFGGQkI/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/XvlO5SBG8hM/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/MzPrsmk0pnA/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/7ku5YJtfH_0/maxresdefault.jpg"
       ],
       category: "Classic",
       createdAt: "2024-10-15",
+      recentlyLiked: true
+    },
+    {
+      id: "r9",
+      title: "Deep Dives & Documentaries",
+      description: "Long-form content that takes you on a journey through fascinating topics and untold stories",
+      creator: {
+        name: "Documentary Dan",
+        username: "docdan",
+        avatar: "https://i.pravatar.cc/150?img=17"
+      },
+      videoCount: 73,
+      likes: 4120,
+      views: 28700,
+      comments: 892,
+      thumbnails: [
+        "https://i.ytimg.com/vi/HG6LRH-kJQ0/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/UBMk30rjy0o/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/NWONeJKn6kc/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/XwfzqCDuQCQ/maxresdefault.jpg"
+      ],
+      category: "Documentary",
+      createdAt: "2024-11-01",
+      recentlyLiked: true
+    },
+    {
+      id: "r10",
+      title: "Cooking Adventures",
+      description: "From simple recipes to complex culinary masterpieces, these videos will inspire your next meal",
+      creator: {
+        name: "Chef Maria",
+        username: "chefmaria",
+        avatar: "https://i.pravatar.cc/150?img=18"
+      },
+      videoCount: 92,
+      likes: 5670,
+      views: 42300,
+      comments: 1456,
+      thumbnails: [
+        "https://i.ytimg.com/vi/xWPUJDG4Gk4/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/WJ3-F02-F_Y/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/HG6LRH-kJQ0/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/UBMk30rjy0o/maxresdefault.jpg"
+      ],
+      category: "Food",
+      createdAt: "2024-10-25",
+      recentlyLiked: true
+    },
+    {
+      id: "r11",
+      title: "Late Night Vibes",
+      description: "Perfect for those 2 AM browsing sessions when you can't sleep and need something chill",
+      creator: {
+        name: "Night Owl",
+        username: "nightowl",
+        avatar: "https://i.pravatar.cc/150?img=19"
+      },
+      videoCount: 28,
+      likes: 1890,
+      views: 9800,
+      comments: 234,
+      thumbnails: [
+        "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/j5-yKhDd64s/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/9vz06QO3UkQ/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/jJpIzr2sCDE/maxresdefault.jpg"
+      ],
+      category: "Chill",
+      createdAt: "2024-11-07",
+      recentlyLiked: true
+    },
+    {
+      id: "r12",
+      title: "Mind-Bending Science",
+      description: "Videos that will make you question everything you thought you knew about the universe",
+      creator: {
+        name: "Science Sam",
+        username: "sciencesam",
+        avatar: "https://i.pravatar.cc/150?img=20"
+      },
+      videoCount: 64,
+      likes: 7890,
+      views: 56700,
+      comments: 2340,
+      thumbnails: [
+        "https://i.ytimg.com/vi/MzPrsmk0pnA/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/7ku5YJtfH_0/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/xWPUJDG4Gk4/maxresdefault.jpg",
+        "https://i.ytimg.com/vi/WJ3-F02-F_Y/maxresdefault.jpg"
+      ],
+      category: "Science",
+      createdAt: "2024-10-18",
       recentlyLiked: true
     }
   ];
@@ -507,6 +673,73 @@ const ListsPage = () => {
     </Card>
   );
 
+  // Vertical list card for Recently Liked section
+  const VerticalListCard = ({ list }: { list: VideoList }) => (
+    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-lg border-l-4 border-l-transparent hover:border-l-primary">
+      <Link to={`/lists/${list.id}`}>
+        <CardContent className="p-6">
+          <div className="flex gap-6">
+            {/* Larger thumbnail stack for vertical layout */}
+            <div className="relative flex-shrink-0 w-[120px] h-[80px]">
+              {list.thumbnails.slice(0, 4).map((thumbnail, index) => (
+                <div 
+                  key={index} 
+                  className="absolute w-20 h-16 overflow-hidden rounded-md shadow-md transition-transform duration-300 group-hover:scale-105"
+                  style={{ 
+                    left: `${index * 16}px`,
+                    top: `${index * 4}px`,
+                    zIndex: list.thumbnails.length - index 
+                  }}
+                >
+                  <img 
+                    src={thumbnail} 
+                    alt={list.title}
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+            
+            {/* Content */}
+            <div className="flex-1 space-y-3">
+              <div>
+                <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors">
+                  {list.title}
+                </h3>
+                <div className="flex items-center space-x-2 mt-2">
+                  <Avatar className="h-6 w-6">
+                    <AvatarImage src={list.creator.avatar} alt={list.creator.name} />
+                    <AvatarFallback className="text-xs">
+                      {list.creator.name.split(' ').map(n => n[0]).join('')}
+                    </AvatarFallback>
+                  </Avatar>
+                  <span className="text-sm font-medium text-gray-600">{list.creator.username}</span>
+                  <div className="flex items-center space-x-4 text-sm text-gray-500">
+                    <span>{formatNumber(list.videoCount)} films</span>
+                    <div className="flex items-center space-x-1">
+                      <Heart className="h-4 w-4 fill-current text-red-500" />
+                      <span>{formatNumber(list.likes)}</span>
+                    </div>
+                    <div className="flex items-center space-x-1">
+                      <MessageCircle className="h-4 w-4" />
+                      <span>{formatNumber(list.comments)}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {list.description && (
+                <p className="text-gray-600 line-clamp-2 leading-relaxed">
+                  {list.description}
+                </p>
+              )}
+            </div>
+          </div>
+        </CardContent>
+      </Link>
+    </Card>
+  );
+
   const BigListCardSkeleton = () => (
     <Card className="overflow-hidden shadow-lg">
       <CardContent className="p-0">
@@ -578,6 +811,42 @@ const ListsPage = () => {
               </div>
               <Skeleton className="h-4 w-12" />
             </div>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+
+  const VerticalListCardSkeleton = () => (
+    <Card className="overflow-hidden">
+      <CardContent className="p-6">
+        <div className="flex gap-6">
+          <div className="relative flex-shrink-0 w-[120px] h-[80px]">
+            {Array.from({ length: 4 }).map((_, index) => (
+              <Skeleton 
+                key={index} 
+                className="absolute w-20 h-16 rounded-md" 
+                style={{ 
+                  left: `${index * 16}px`,
+                  top: `${index * 4}px`,
+                  zIndex: 4 - index 
+                }}
+              />
+            ))}
+          </div>
+          <div className="flex-1 space-y-3">
+            <div>
+              <Skeleton className="h-6 w-3/4" />
+              <div className="flex items-center space-x-2 mt-2">
+                <Skeleton className="h-6 w-6 rounded-full" />
+                <Skeleton className="h-4 w-20" />
+                <Skeleton className="h-4 w-16" />
+                <Skeleton className="h-4 w-12" />
+                <Skeleton className="h-4 w-8" />
+              </div>
+            </div>
+            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-4 w-2/3" />
           </div>
         </div>
       </CardContent>
@@ -683,7 +952,7 @@ const ListsPage = () => {
           </section>
         )}
 
-        {/* Recently liked section */}
+        {/* Recently liked section - Vertical Layout */}
         {recentlyLikedLists.length > 0 && (
           <section className="py-12 bg-white">
             <div className="container mx-auto px-4">
@@ -696,15 +965,15 @@ const ListsPage = () => {
               </div>
               
               {loading ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                <div className="space-y-4 max-w-4xl">
                   {Array.from({ length: 8 }).map((_, index) => (
-                    <RegularListCardSkeleton key={index} />
+                    <VerticalListCardSkeleton key={index} />
                   ))}
                 </div>
               ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                <div className="space-y-4 max-w-4xl">
                   {recentlyLikedLists.map((list) => (
-                    <RegularListCard key={list.id} list={list} />
+                    <VerticalListCard key={list.id} list={list} />
                   ))}
                 </div>
               )}
