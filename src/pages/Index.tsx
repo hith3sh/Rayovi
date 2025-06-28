@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -161,7 +160,7 @@ const Index = () => {
       
       <main className="flex-1">
         {/* Hero section */}
-        <section className="bg-gradient-to-r from-secondary to-black py-16 text-white">
+        <section className="gradient-letterboxd py-16 text-foreground">
           <div className="container mx-auto px-4">
             <div className="max-w-2xl space-y-6">
               <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">
@@ -171,11 +170,11 @@ const Index = () => {
                 <br />
                 Tell your friends what's good.
               </h1>
-              <p className="text-lg text-gray-300">
+              <p className="text-lg text-muted-foreground">
                 The social network for video lovers. Create a profile to track and rate your favorite YouTube videos, write reviews, make lists, and connect with other content enthusiasts.
               </p>
               <div className="space-x-4">
-                <Button size="lg" className="bg-primary hover:bg-primary/90">
+                <Button size="lg" className="btn-letterboxd">
                   Get started — it's free!
                 </Button>
               </div>
@@ -188,17 +187,17 @@ const Index = () => {
           <div className="container mx-auto grid grid-cols-1 gap-12 px-4 lg:grid-cols-3">
             <div className="col-span-2 space-y-12">
               <PopularVideos videos={popularVideos} title="Popular this week" />
-              <Separator />
+              <Separator className="separator-letterboxd" />
               <PopularVideos videos={recentVideos} title="Recently added" />
             </div>
             
             <div className="space-y-8">
-              <div className="rounded-lg bg-gray-50 p-6">
-                <h3 className="mb-4 text-lg font-semibold">Join today</h3>
-                <p className="mb-6 text-gray-600">
+              <div className="card-letterboxd p-6">
+                <h3 className="mb-4 text-lg font-semibold text-foreground">Join today</h3>
+                <p className="mb-6 text-muted-foreground">
                   Keep track of every video you've ever watched or just start from the day you join. Rate, review and tag as you go.
                 </p>
-                <Button className="w-full bg-primary hover:bg-primary/90">
+                <Button className="btn-letterboxd w-full">
                   Create an account
                 </Button>
               </div>
