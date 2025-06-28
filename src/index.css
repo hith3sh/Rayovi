@@ -5,28 +5,28 @@
 @layer base {
   :root {
     --background: 210 13% 9%; /* #14171A - Deep charcoal */
-    --foreground: 200 17% 93%; /* #EBEEF0 - Off-white */
+    --foreground: 0 0% 98%; /* #FAFAFA - Pure white for maximum contrast */
 
     --card: 210 12% 13%; /* #1C2124 - Elevated dark surface */
-    --card-foreground: 200 17% 93%; /* #EBEEF0 - Off-white */
+    --card-foreground: 0 0% 98%; /* #FAFAFA - Pure white for maximum contrast */
 
     --popover: 210 12% 13%; /* #1C2124 - Dark modal background */
-    --popover-foreground: 200 17% 93%; /* #EBEEF0 - Off-white */
+    --popover-foreground: 0 0% 98%; /* #FAFAFA - Pure white for maximum contrast */
 
     --primary: 142 100% 44%; /* #00E054 - Letterboxd green */
     --primary-foreground: 210 13% 9%; /* #14171A - Dark text on green */
 
     --secondary: 210 12% 13%; /* #1C2124 - Secondary dark surface */
-    --secondary-foreground: 200 17% 93%; /* #EBEEF0 - Off-white */
+    --secondary-foreground: 0 0% 98%; /* #FAFAFA - Pure white for maximum contrast */
 
     --muted: 210 12% 13%; /* #1C2124 - Muted background */
-    --muted-foreground: 210 19% 67%; /* #99AABB - Light gray secondary text */
+    --muted-foreground: 0 0% 85%; /* #D9D9D9 - High contrast light gray */
 
     --accent: 210 12% 13%; /* #1C2124 - Accent background */
-    --accent-foreground: 200 17% 93%; /* #EBEEF0 - Off-white */
+    --accent-foreground: 0 0% 98%; /* #FAFAFA - Pure white for maximum contrast */
 
     --destructive: 0 84% 60%; /* Red for destructive actions */
-    --destructive-foreground: 200 17% 93%; /* #EBEEF0 - Off-white */
+    --destructive-foreground: 0 0% 98%; /* #FAFAFA - Pure white for maximum contrast */
 
     --border: 218 19% 27%; /* #374151 - Subtle borders */
     --input: 210 12% 13%; /* #1C2124 - Input background */
@@ -35,11 +35,11 @@
     --radius: 0.25rem; /* 4px border radius */
 
     --sidebar-background: 210 13% 9%; /* #14171A */
-    --sidebar-foreground: 200 17% 93%; /* #EBEEF0 */
+    --sidebar-foreground: 0 0% 98%; /* #FAFAFA - Pure white for maximum contrast */
     --sidebar-primary: 142 100% 44%; /* #00E054 */
     --sidebar-primary-foreground: 210 13% 9%; /* #14171A */
     --sidebar-accent: 210 12% 13%; /* #1C2124 */
-    --sidebar-accent-foreground: 200 17% 93%; /* #EBEEF0 */
+    --sidebar-accent-foreground: 0 0% 98%; /* #FAFAFA - Pure white for maximum contrast */
     --sidebar-border: 218 19% 27%; /* #374151 */
     --sidebar-ring: 142 100% 44%; /* #00E054 */
   }
@@ -183,7 +183,7 @@
   }
 
   .nav-item-letterboxd {
-    @apply text-muted-foreground hover:text-foreground transition-colors duration-200;
+    @apply text-foreground/80 hover:text-foreground transition-colors duration-200;
   }
 
   .nav-item-letterboxd:hover {
