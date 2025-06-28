@@ -292,13 +292,13 @@ const MembersPage = () => {
   };
 
   const MemberCard = ({ member, featured = false, isFollowed = false }: { member: Member; featured?: boolean; isFollowed?: boolean }) => (
-    <Card className={`group overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 ${featured ? 'border-primary/20' : ''}`}>
+    <Card className={`group overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 card-letterboxd ${featured ? 'border-primary/20' : ''}`}>
       <CardContent className="p-4">
         <div className="flex flex-col items-center text-center space-y-3">
           <div className="relative">
-            <Avatar className={`${featured ? 'h-24 w-24' : 'h-16 w-16'} border-2 border-white shadow-md transition-transform duration-300 group-hover:scale-105`}>
+            <Avatar className={`${featured ? 'h-24 w-24' : 'h-16 w-16'} border-2 border-border shadow-md transition-transform duration-300 group-hover:scale-105 avatar-letterboxd`}>
               <AvatarImage src={member.avatar} alt={member.name} />
-              <AvatarFallback className={`${featured ? 'text-lg' : 'text-sm'} font-semibold`}>
+              <AvatarFallback className={`${featured ? 'text-lg' : 'text-sm'} font-semibold bg-muted text-muted-foreground`}>
                 {member.name.split(' ').map(n => n[0]).join('')}
               </AvatarFallback>
             </Avatar>
@@ -308,7 +308,7 @@ const MembersPage = () => {
               onClick={() => isFollowed ? handleUnfollow(member.id) : handleFollow(member.id)}
               className={`absolute -bottom-1 -right-1 rounded-full p-1.5 shadow-md transition-all duration-200 hover:scale-110 ${
                 member.isFollowing || isFollowed
-                  ? 'bg-red-500 hover:bg-red-600 text-white'
+                  ? 'bg-destructive hover:bg-destructive/90 text-destructive-foreground'
                   : 'bg-primary hover:bg-primary/90 text-primary-foreground'
               }`}
             >
@@ -328,16 +328,16 @@ const MembersPage = () => {
           
           <div className="space-y-1 min-h-[3rem] flex flex-col justify-center">
             <Link to={`/user/${member.username}`}>
-              <h3 className={`${featured ? 'text-base' : 'text-sm'} font-bold text-gray-900 group-hover:text-primary transition-colors line-clamp-1`}>
+              <h3 className={`${featured ? 'text-base' : 'text-sm'} font-bold text-foreground group-hover:text-primary transition-colors line-clamp-1`}>
                 {member.name}
               </h3>
             </Link>
-            <p className="text-xs text-gray-500">@{member.username}</p>
+            <p className="text-xs text-muted-foreground">@{member.username}</p>
           </div>
           
-          <div className="flex items-center justify-center space-x-3 text-xs text-gray-500 w-full">
+          <div className="flex items-center justify-center space-x-3 text-xs text-muted-foreground w-full">
             <div className="flex items-center space-x-1">
-              <Star className="h-3 w-3 fill-current text-yellow-500" />
+              <Star className="h-3 w-3 fill-current text-primary" />
               <span>{formatNumber(member.stats.videosRated)}</span>
             </div>
             <div className="flex items-center space-x-1">
@@ -351,7 +351,7 @@ const MembersPage = () => {
   );
 
   const MemberCardSkeleton = ({ featured = false }: { featured?: boolean }) => (
-    <Card className="overflow-hidden">
+    <Card className="overflow-hidden card-letterboxd">
       <CardContent className="p-4">
         <div className="flex flex-col items-center text-center space-y-3">
           <Skeleton className={`${featured ? 'h-24 w-24' : 'h-16 w-16'} rounded-full`} />
@@ -369,18 +369,18 @@ const MembersPage = () => {
   );
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-background">
       <Navbar />
       
-      <main className="flex-1 bg-gray-50">
+      <main className="flex-1">
         {/* Header section */}
-        <div className="bg-white border-b">
+        <div className="bg-background border-b border-border">
           <div className="container mx-auto px-4 py-12">
             <div className="text-center space-y-4">
-              <h1 className="text-4xl font-bold text-gray-900">
+              <h1 className="text-4xl font-bold text-foreground">
                 Video lovers, critics and friends — find popular members.
               </h1>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Connect with fellow video enthusiasts, discover new perspectives, and build your community of content lovers.
               </p>
             </div>
@@ -388,17 +388,17 @@ const MembersPage = () => {
         </div>
 
         {/* Search section */}
-        <div className="bg-white border-b">
+        <div className="bg-background border-b border-border">
           <div className="container mx-auto px-4 py-6">
             <div className="max-w-md mx-auto">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
                   type="search"
                   placeholder="Search members..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 pr-4 py-2 w-full"
+                  className="pl-10 pr-4 py-2 w-full input-letterboxd"
                 />
               </div>
             </div>
@@ -407,12 +407,12 @@ const MembersPage = () => {
 
         {/* People You Follow section */}
         {followedMembers.length > 0 && (
-          <section className="py-8 bg-white border-b">
+          <section className="py-8 bg-background border-b border-border">
             <div className="container mx-auto px-4">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-bold text-gray-900">People You Follow</h2>
+                <h2 className="text-xl font-bold text-foreground">People You Follow</h2>
                 {followedMembers.length > 5 && (
-                  <Button variant="outline" size="sm" className="flex items-center gap-2">
+                  <Button variant="outline" size="sm" className="flex items-center gap-2 btn-letterboxd-outline">
                     See All
                     <ChevronRight className="h-4 w-4" />
                   </Button>
@@ -432,11 +432,11 @@ const MembersPage = () => {
 
         {/* Featured members section */}
         {featuredMembers.length > 0 && (
-          <section className="py-12">
+          <section className="py-12 bg-card">
             <div className="container mx-auto px-4">
               <div className="mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">Featured Members</h2>
-                <p className="text-gray-600">Our most active and influential community members</p>
+                <h2 className="text-2xl font-bold text-foreground mb-2">Featured Members</h2>
+                <p className="text-muted-foreground">Our most active and influential community members</p>
               </div>
               
               {loading ? (
@@ -457,14 +457,14 @@ const MembersPage = () => {
         )}
 
         {/* All members section */}
-        <section className="py-12 bg-white">
+        <section className="py-12 bg-background">
           <div className="container mx-auto px-4">
             <div className="mb-8 flex items-center justify-between">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                <h2 className="text-2xl font-bold text-foreground mb-2">
                   {searchTerm ? `Search Results (${filteredMembers.length})` : 'All Members'}
                 </h2>
-                <p className="text-gray-600">
+                <p className="text-muted-foreground">
                   {searchTerm 
                     ? `Members matching "${searchTerm}"`
                     : 'Discover and connect with our community'
@@ -481,11 +481,11 @@ const MembersPage = () => {
               </div>
             ) : filteredMembers.length === 0 ? (
               <div className="text-center py-12">
-                <Users className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-lg font-medium text-gray-900 mb-2">
+                <Users className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                <h3 className="text-lg font-medium text-foreground mb-2">
                   {searchTerm ? 'No members found' : 'No members yet'}
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-muted-foreground">
                   {searchTerm 
                     ? 'Try adjusting your search terms'
                     : 'Be the first to join our community!'
@@ -495,7 +495,7 @@ const MembersPage = () => {
                   <Button 
                     variant="outline" 
                     onClick={() => setSearchTerm('')}
-                    className="mt-4"
+                    className="mt-4 btn-letterboxd-outline"
                   >
                     Clear search
                   </Button>
@@ -512,13 +512,13 @@ const MembersPage = () => {
         </section>
 
         {/* Call to action section */}
-        <section className="py-16 bg-gray-900 text-white">
+        <section className="py-16 bg-card">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-4">Join Our Community</h2>
-            <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold mb-4 text-foreground">Join Our Community</h2>
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Connect with thousands of video enthusiasts, share your reviews, and discover your next favorite content.
             </p>
-            <Button size="lg" className="bg-primary hover:bg-primary/90">
+            <Button size="lg" className="btn-letterboxd">
               Create Your Profile
             </Button>
           </div>
