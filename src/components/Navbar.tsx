@@ -46,9 +46,11 @@ const Navbar: React.FC = () => {
             Log in
           </Button>
           
-          <Button variant="default" size="sm" className="btn-letterboxd">
-            Create account
-          </Button>
+          <Link to="/auth">
+            <Button variant="default" size="sm" className="btn-letterboxd">
+              Create account
+            </Button>
+          </Link>
         </div>
       </div>
     </nav>
