@@ -67,7 +67,7 @@ const AuthCallbackPage = () => {
         localStorage.setItem('user_profile', JSON.stringify(userProfile));
         localStorage.setItem('access_token', tokenResponse.access_token);
         
-        toast("Welcome to Tubeboxd!", {
+        toast("Welcome to Rayovi!", {
           description: "Your YouTube account has been successfully connected.",
         });
 

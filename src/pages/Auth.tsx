@@ -104,7 +104,7 @@ const AuthPage = () => {
         <div className="text-center mb-8">
           <Link to="/" className="inline-flex items-center gap-2 text-2xl font-bold text-primary mb-4">
             <Youtube className="h-8 w-8" />
-            Tubeboxd
+            Rayovi
           </Link>
           <h1 className="text-3xl md:text-4xl font-bold text-foreground mb-2">
             Join the Community
@@ -195,7 +195,7 @@ const AuthPage = () => {
                       className="mt-1"
                     />
                     <label htmlFor="consent" className="text-sm text-muted-foreground leading-relaxed cursor-pointer">
-                      I consent to Tubeboxd accessing my YouTube profile data, including my channel information, 
+                      I consent to Rayovi accessing my YouTube profile data, including my channel information, 
                       liked videos, playlists, and subscriptions to enhance my experience on the platform. 
                       I understand I can revoke this access at any time.
                     </label>
