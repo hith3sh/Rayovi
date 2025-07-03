@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-between space-y-4 md:flex-row md:space-y-0">
           <div className="flex items-center">
-            <Link to="/" className="text-xl font-bold text-primary">Tubeboxd</Link>
+            <Link to="/" className="text-xl font-bold text-primary">Rayovi</Link>
           </div>
           
           <div className="flex space-x-6">
@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
           </div>
           
           <div className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Tubeboxd. All rights reserved.
+            © {new Date().getFullYear()} Rayovi. All rights reserved.
           </div>
         </div>
       </div>

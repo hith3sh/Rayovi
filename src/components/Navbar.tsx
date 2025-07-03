@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto flex items-center justify-between px-4">
         <div className="flex items-center space-x-8">
           <Link to="/" className="flex items-center">
-            <span className="text-2xl font-bold text-primary">Tubeboxd</span>
+            <span className="text-2xl font-bold text-primary">Rayovi 🎭</span>
           </Link>
           
           <div className="hidden md:flex space-x-6">

@@ -165,18 +165,14 @@ const Index = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-2xl space-y-6">
               <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">
-                Track videos you've watched.
-                <br />
-                Save those you want to see.
-                <br />
-                Tell your friends what's good.
+                We're everything youtube is missing.
               </h1>
               <p className="text-lg text-muted-foreground">
-                The social network for video lovers. Create a profile to track and rate your favorite YouTube videos, write reviews, make lists, and connect with other content enthusiasts.
+                The social network for Youtube video lovers.
               </p>
               <div className="space-x-4">
                 <Link to="/auth">
-                  <Button size="lg" className="btn-letterboxd">
+                  <Button size="lg" className="get-started-btn">
                     Get started — it's free!
                   </Button>
                 </Link>
