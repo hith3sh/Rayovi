@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const SCOPES = 'openid email profile https://www.googleapis.com/auth/youtube.readonly';
-const CLIENT_ID = '240624725627-gpainmsjc1am19pks35ar4erl46ph7s9.apps.googleusercontent.com'; // TODO: Replace with your real client ID
+
+const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 
 const Auth = () => {
   const navigate = useNavigate();
