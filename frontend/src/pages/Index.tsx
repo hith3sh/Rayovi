@@ -1,4 +1,8 @@
+<<<<<<< HEAD:frontend/src/pages/Index.tsx
 import React, { useEffect, useState } from 'react';
+=======
+import React from 'react';
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Index.tsx
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import RecentActivity from '@/components/RecentActivity';
@@ -6,7 +10,10 @@ import PopularVideos from '@/components/PopularVideos';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD:frontend/src/pages/Index.tsx
 import { Avatar } from '@/components/ui/avatar';
+=======
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Index.tsx
 
 const Index = () => {
   // Mock data for videos
@@ -177,6 +184,7 @@ const Index = () => {
         <section className="gradient-letterboxd py-16 text-foreground">
           <div className="container mx-auto px-4">
             <div className="max-w-2xl space-y-6">
+<<<<<<< HEAD:frontend/src/pages/Index.tsx
               {user ? (
                 <>
                   <div className="flex items-center gap-4 mb-4">
@@ -220,6 +228,21 @@ const Index = () => {
                   </div>
                 </>
               )}
+=======
+              <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">
+                We're everything youtube is missing.
+              </h1>
+              <p className="text-lg text-muted-foreground">
+                The social network for Youtube video lovers.
+              </p>
+              <div className="space-x-4">
+                <Link to="/auth">
+                  <Button size="lg" className="get-started-btn">
+                    Get started — it's free!
+                  </Button>
+                </Link>
+              </div>
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Index.tsx
             </div>
           </div>
         </section>

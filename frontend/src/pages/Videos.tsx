@@ -528,7 +528,11 @@ const VideosPage = () => {
                   <button
                     key={category.id}
                     onClick={() => handleCategoryClick(category.id)}
+<<<<<<< HEAD:frontend/src/pages/Videos.tsx
                     className="group relative overflow-hidden rounded-lg aspect-square transition-all duration-300 material-hover"
+=======
+                    className="group relative overflow-hidden rounded-lg aspect-square transition-all duration-300 hover:scale-105 hover:shadow-xl"
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Videos.tsx
                   >
                     <div className={`absolute inset-0 bg-gradient-to-br ${category.gradient} opacity-90`} />
                     <div className="absolute inset-0 bg-black/20" />

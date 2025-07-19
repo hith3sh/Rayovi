@@ -1,0 +1,399 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 13% 9%; /* #14171A - Deep charcoal */
+    --foreground: 0 0% 98%; /* #FAFAFA - Pure white for maximum contrast */
+
+    --card: 210 12% 13%; /* #1C2124 - Elevated dark surface */
+    --card-foreground: 0 0% 98%; /* #FAFAFA - Pure white for maximum contrast */
+
+    --popover: 210 12% 13%; /* #1C2124 - Dark modal background */
+    --popover-foreground: 0 0% 98%; /* #FAFAFA - Pure white for maximum contrast */
+
+    --primary: 142 100% 44%; /* #00E054 - Letterboxd green */
+    --primary-foreground: 210 13% 9%; /* #14171A - Dark text on green */
+
+    --secondary: 210 12% 13%; /* #1C2124 - Secondary dark surface */
+    --secondary-foreground: 0 0% 98%; /* #FAFAFA - Pure white for maximum contrast */
+
+    --muted: 210 12% 13%; /* #1C2124 - Muted background */
+    --muted-foreground: 0 0% 85%; /* #D9D9D9 - High contrast light gray */
+
+    --accent: 210 12% 13%; /* #1C2124 - Accent background */
+    --accent-foreground: 0 0% 98%; /* #FAFAFA - Pure white for maximum contrast */
+
+    --destructive: 0 84% 60%; /* Red for destructive actions */
+    --destructive-foreground: 0 0% 98%; /* #FAFAFA - Pure white for maximum contrast */
+
+    --border: 218 19% 27%; /* #374151 - Subtle borders */
+    --input: 210 12% 13%; /* #1C2124 - Input background */
+    --ring: 142 100% 44%; /* #00E054 - Focus ring green */
+
+    --radius: 0.25rem; /* 4px border radius */
+
+    --sidebar-background: 210 13% 9%; /* #14171A */
+    --sidebar-foreground: 0 0% 98%; /* #FAFAFA - Pure white for maximum contrast */
+    --sidebar-primary: 142 100% 44%; /* #00E054 */
+    --sidebar-primary-foreground: 210 13% 9%; /* #14171A */
+    --sidebar-accent: 210 12% 13%; /* #1C2124 */
+    --sidebar-accent-foreground: 0 0% 98%; /* #FAFAFA - Pure white for maximum contrast */
+    --sidebar-border: 218 19% 27%; /* #374151 */
+    --sidebar-ring: 142 100% 44%; /* #00E054 */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Custom scrollbar for dark theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/30;
+  }
+}
+
+@layer components {
+  /* Video card components with dark theme */
+  .video-card {
+    @apply overflow-hidden rounded transition-all duration-200 hover:shadow-xl;
+    border-radius: 4px;
+  }
+  
+  .video-card-image {
+    @apply aspect-video w-full object-cover transition-transform duration-200;
+  }
+  
+  .video-card:hover .video-card-image {
+    @apply scale-105;
+  }
+  
+  .video-rating {
+    @apply flex items-center space-x-1;
+  }
+  
+  .star-rated {
+    @apply text-primary;
+  }
+  
+  .star-unrated {
+    @apply text-muted-foreground/50;
+  }
+
+  /* Dark theme specific utilities */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Enhanced shadows for dark theme */
+  .shadow-letterboxd {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  }
+
+  .shadow-letterboxd-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  }
+
+  .shadow-letterboxd-xl {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Letterboxd-style hover effects */
+  .letterboxd-hover {
+    @apply transition-all duration-200 hover:shadow-letterboxd-lg;
+  }
+
+  .letterboxd-hover:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Focus states with green accent */
+  .focus-letterboxd {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background;
+  }
+
+  /* Button variants for dark theme */
+  .btn-letterboxd {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 focus-letterboxd;
+    @apply transition-all duration-200 rounded;
+    border-radius: 4px;
+  }
+
+  .btn-letterboxd-outline {
+    @apply border border-primary text-primary hover:bg-primary hover:text-primary-foreground focus-letterboxd;
+    @apply transition-all duration-200 rounded;
+    border-radius: 4px;
+  }
+
+  .btn-letterboxd-ghost {
+    @apply text-foreground hover:bg-accent hover:text-accent-foreground focus-letterboxd;
+    @apply transition-all duration-200 rounded;
+    border-radius: 4px;
+  }
+
+  /* Card styles for dark theme */
+  .card-letterboxd {
+    @apply bg-card text-card-foreground shadow-letterboxd rounded border border-border/50;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+
+  .card-letterboxd:hover {
+    @apply shadow-letterboxd-lg;
+    transform: translateY(-1px);
+  }
+
+  /* Input styles for dark theme */
+  .input-letterboxd {
+    @apply bg-input border border-border text-foreground placeholder:text-muted-foreground;
+    @apply focus:border-primary focus:ring-2 focus:ring-primary/20 focus:ring-offset-0;
+    @apply transition-all duration-200 rounded;
+    border-radius: 4px;
+  }
+
+  /* Navigation styles */
+  .nav-letterboxd {
+    @apply bg-background/95 backdrop-blur-sm border-b border-border/50;
+  }
+
+  .nav-item-letterboxd {
+    @apply text-foreground/80 hover:text-foreground transition-colors duration-200;
+  }
+
+  .nav-item-letterboxd:hover {
+    @apply bg-accent/50;
+  }
+
+  /* Modal/Dialog styles */
+  .modal-letterboxd {
+    @apply bg-popover text-popover-foreground shadow-letterboxd-xl rounded border border-border/50;
+    border-radius: 4px;
+  }
+
+  /* Avatar enhancements */
+  .avatar-letterboxd {
+    @apply ring-2 ring-border/50 transition-all duration-200;
+  }
+
+  .avatar-letterboxd:hover {
+    @apply ring-primary/50;
+  }
+
+  /* Text color utilities for dark theme */
+  .text-primary-letterboxd {
+    color: hsl(var(--foreground));
+  }
+
+  .text-secondary-letterboxd {
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Background utilities */
+  .bg-surface-letterboxd {
+    background-color: hsl(var(--card));
+  }
+
+  .bg-elevated-letterboxd {
+    background-color: hsl(var(--popover));
+  }
+
+  /* Border utilities */
+  .border-letterboxd {
+    border-color: hsl(var(--border));
+  }
+
+  /* Gradient backgrounds for hero sections */
+  .gradient-letterboxd {
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--card)) 100%);
+  }
+
+  .gradient-letterboxd-accent {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary))/80% 100%);
+  }
+
+  /* List card specific styles */
+  .list-card-letterboxd {
+    @apply card-letterboxd transition-all duration-200;
+  }
+
+  .list-card-letterboxd:hover {
+    @apply border-primary/30;
+  }
+
+  /* Member card styles */
+  .member-card-letterboxd {
+    @apply card-letterboxd;
+  }
+
+  .member-card-letterboxd:hover .avatar-letterboxd {
+    @apply ring-primary/50 scale-105;
+  }
+
+  /* Video thumbnail stack effects */
+  .thumbnail-stack {
+    @apply transition-transform duration-200;
+  }
+
+  .thumbnail-stack:hover {
+    @apply scale-105;
+  }
+
+  /* Search input specific styling */
+  .search-letterboxd {
+    @apply input-letterboxd bg-card/50;
+  }
+
+  .search-letterboxd:focus {
+    @apply bg-card;
+  }
+
+  /* Footer styling */
+  .footer-letterboxd {
+    @apply bg-card/50 border-t border-border/50;
+  }
+
+  /* Stats and metrics styling */
+  .stat-letterboxd {
+    @apply text-muted-foreground text-sm;
+  }
+
+  .stat-letterboxd .stat-number {
+    @apply text-foreground font-medium;
+  }
+
+  /* Loading skeleton dark theme */
+  .skeleton-letterboxd {
+    @apply bg-muted/50 animate-pulse rounded;
+    border-radius: 4px;
+  }
+
+  /* Tag/badge styling */
+  .badge-letterboxd {
+    @apply bg-primary/10 text-primary border border-primary/20 rounded-full;
+    border-radius: 4px;
+  }
+
+  /* Separator styling */
+  .separator-letterboxd {
+    @apply bg-border/50;
+  }
+
+  /* Toast/notification styling */
+  .toast-letterboxd {
+    @apply bg-popover text-popover-foreground border border-border/50 shadow-letterboxd-lg rounded;
+    border-radius: 4px;
+  }
+
+  /* Tab styling */
+  .tab-letterboxd {
+    @apply text-muted-foreground hover:text-foreground border-b-2 border-transparent;
+    @apply data-[state=active]:border-primary data-[state=active]:text-foreground;
+    @apply transition-all duration-200;
+  }
+
+  /* Form styling */
+  .form-letterboxd .form-label {
+    @apply text-foreground font-medium;
+  }
+
+  .form-letterboxd .form-description {
+    @apply text-muted-foreground;
+  }
+
+  .form-letterboxd .form-message {
+    @apply text-destructive;
+  }
+
+  .get-started-btn {
+    background: #198e0c;
+    color: #fff;
+    font-size: 3rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 24px;
+    padding: 1.5rem 3rem;
+    cursor: pointer;
+    display: block;
+    margin: 2rem 0 0 0;
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: background 0.2s;
+    text-align: center;
+  }
+  .get-started-btn:hover {
+    background: #03ac1b;
+  }
+}
+
+/* Additional dark theme specific animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+.animate-slideInFromLeft {
+  animation: slideInFromLeft 0.2s ease-out;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .video-card-image,
+  .thumbnail-stack,
+  .avatar-letterboxd,
+  .letterboxd-hover {
+    @apply transition-none;
+  }
+  
+  .video-card:hover .video-card-image,
+  .thumbnail-stack:hover,
+  .letterboxd-hover:hover {
+    transform: none;
+  }
+}

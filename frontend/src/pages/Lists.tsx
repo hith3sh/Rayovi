@@ -479,6 +479,7 @@ const ListsPage = () => {
   ];
 
   useEffect(() => {
+<<<<<<< HEAD:frontend/src/pages/Lists.tsx
     // Load data immediately
     const popular = mockLists.filter(list => list.id.startsWith('p'));
     const featured = mockLists.filter(list => list.featured);
@@ -491,6 +492,24 @@ const ListsPage = () => {
     setLists(all);
     setFilteredLists(all);
     setLoading(false);
+=======
+    // Simulate loading
+    const timer = setTimeout(() => {
+      const popular = mockLists.filter(list => list.id.startsWith('p'));
+      const featured = mockLists.filter(list => list.featured);
+      const recentlyLiked = mockLists.filter(list => list.recentlyLiked);
+      const all = mockLists;
+      
+      setPopularLists(popular);
+      setFeaturedLists(featured);
+      setRecentlyLikedLists(recentlyLiked);
+      setLists(all);
+      setFilteredLists(all);
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Lists.tsx
   }, []);
 
   useEffect(() => {
@@ -513,16 +532,28 @@ const ListsPage = () => {
   };
 
   const BigListCard = ({ list }: { list: VideoList }) => (
+<<<<<<< HEAD:frontend/src/pages/Lists.tsx
     <Card className="group overflow-hidden transition-all duration-300 ease-out shadow-md shadow-black/20 bg-card border-border material-hover">
       <Link to={`/lists/${list.id}`}>
         <CardContent className="p-0">
           {/* Large prominent image section */}
           <div className="relative h-48 overflow-hidden bg-background">
+=======
+    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-xl shadow-lg card-letterboxd">
+      <Link to={`/lists/${list.id}`}>
+        <CardContent className="p-0">
+          {/* Large prominent image section */}
+          <div className="relative h-48 overflow-hidden bg-muted">
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Lists.tsx
             <div className="relative w-full h-full">
               {list.thumbnails.slice(0, 4).map((thumbnail, index) => (
                 <div 
                   key={index} 
+<<<<<<< HEAD:frontend/src/pages/Lists.tsx
                   className="absolute w-24 h-16 overflow-hidden rounded-lg shadow-lg transition-transform duration-300 ease-out group-hover:scale-105 will-change-transform"
+=======
+                  className="absolute w-24 h-16 overflow-hidden rounded-md shadow-lg transition-transform duration-300 group-hover:scale-105"
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Lists.tsx
                   style={{ 
                     left: `${20 + index * 20}px`,
                     top: `${20 + index * 8}px`,
@@ -538,17 +569,30 @@ const ListsPage = () => {
               ))}
               
               {/* Simple overlay on hover */}
+<<<<<<< HEAD:frontend/src/pages/Lists.tsx
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-300 ease-out" />
+=======
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-all duration-300" />
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Lists.tsx
             </div>
           </div>
           
           {/* Compact content section */}
+<<<<<<< HEAD:frontend/src/pages/Lists.tsx
           <div className="p-4 md:p-6 space-y-3">
             <div>
               <h3 className="text-sm font-bold text-foreground group-hover:text-primary transition-colors line-clamp-1">
                 {list.title}
               </h3>
               <p className="text-xs text-muted-foreground line-clamp-2 mt-1">
+=======
+          <div className="p-4 space-y-3">
+            <div>
+              <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors line-clamp-1">
+                {list.title}
+              </h3>
+              <p className="text-sm text-muted-foreground line-clamp-2 mt-1">
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Lists.tsx
                 {list.description}
               </p>
             </div>
@@ -558,7 +602,11 @@ const ListsPage = () => {
               <div className="flex items-center space-x-2">
                 <Avatar className="h-6 w-6">
                   <AvatarImage src={list.creator.avatar} alt={list.creator.name} />
+<<<<<<< HEAD:frontend/src/pages/Lists.tsx
                   <AvatarFallback className="text-xs bg-muted text-foreground">
+=======
+                  <AvatarFallback className="text-xs">
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Lists.tsx
                     {list.creator.name.split(' ').map(n => n[0]).join('')}
                   </AvatarFallback>
                 </Avatar>
@@ -566,7 +614,11 @@ const ListsPage = () => {
               </div>
               
               {list.category && (
+<<<<<<< HEAD:frontend/src/pages/Lists.tsx
                 <span className="bg-primary text-primary-foreground px-2 py-1 rounded-full text-xs font-medium">
+=======
+                <span className="bg-primary/10 text-primary px-2 py-1 rounded-full text-xs font-medium">
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Lists.tsx
                   {list.category}
                 </span>
               )}
@@ -593,16 +645,27 @@ const ListsPage = () => {
   );
 
   const RegularListCard = ({ list }: { list: VideoList }) => (
+<<<<<<< HEAD:frontend/src/pages/Lists.tsx
     <Card className="group overflow-hidden transition-all duration-300 ease-out bg-card border-border material-hover">
       <Link to={`/lists/${list.id}`}>
         <CardContent className="p-4 md:p-6">
           <div className="flex gap-4 md:gap-6">
+=======
+    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 card-letterboxd">
+      <Link to={`/lists/${list.id}`}>
+        <CardContent className="p-4">
+          <div className="flex gap-4">
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Lists.tsx
             {/* Card stack thumbnail display */}
             <div className="relative flex-shrink-0 w-[88px] h-[48px]">
               {list.thumbnails.slice(0, 3).map((thumbnail, index) => (
                 <div 
                   key={index} 
+<<<<<<< HEAD:frontend/src/pages/Lists.tsx
                   className="absolute w-16 h-12 overflow-hidden rounded-lg transition-transform duration-300 ease-out group-hover:scale-105 will-change-transform"
+=======
+                  className="absolute w-16 h-12 overflow-hidden rounded transition-transform duration-300 group-hover:scale-105"
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Lists.tsx
                   style={{ 
                     left: `${index * 12}px`, 
                     zIndex: list.thumbnails.length - index 
@@ -633,7 +696,11 @@ const ListsPage = () => {
                 <div className="flex items-center space-x-2">
                   <Avatar className="h-6 w-6">
                     <AvatarImage src={list.creator.avatar} alt={list.creator.name} />
+<<<<<<< HEAD:frontend/src/pages/Lists.tsx
                     <AvatarFallback className="text-xs bg-muted text-foreground">
+=======
+                    <AvatarFallback className="text-xs">
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Lists.tsx
                       {list.creator.name.split(' ').map(n => n[0]).join('')}
                     </AvatarFallback>
                   </Avatar>
@@ -657,7 +724,11 @@ const ListsPage = () => {
                   </div>
                 </div>
                 {list.category && (
+<<<<<<< HEAD:frontend/src/pages/Lists.tsx
                   <span className="bg-muted text-foreground px-2 py-1 rounded text-xs">
+=======
+                  <span className="bg-muted px-2 py-1 rounded text-xs">
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Lists.tsx
                     {list.category}
                   </span>
                 )}
@@ -671,7 +742,11 @@ const ListsPage = () => {
 
   // Vertical list card for Recently Liked section
   const VerticalListCard = ({ list }: { list: VideoList }) => (
+<<<<<<< HEAD:frontend/src/pages/Lists.tsx
     <Card className="group overflow-hidden transition-all duration-300 ease-out border-l-4 border-l-transparent hover:border-l-primary bg-card border-border material-hover">
+=======
+    <Card className="group overflow-hidden transition-all duration-300 hover:shadow-lg border-l-4 border-l-transparent hover:border-l-primary card-letterboxd">
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Lists.tsx
       <Link to={`/lists/${list.id}`}>
         <CardContent className="p-6">
           <div className="flex gap-6">
@@ -680,7 +755,11 @@ const ListsPage = () => {
               {list.thumbnails.slice(0, 4).map((thumbnail, index) => (
                 <div 
                   key={index} 
+<<<<<<< HEAD:frontend/src/pages/Lists.tsx
                   className="absolute w-20 h-16 overflow-hidden rounded-lg shadow-md transition-transform duration-300 ease-out group-hover:scale-105 will-change-transform"
+=======
+                  className="absolute w-20 h-16 overflow-hidden rounded-md shadow-md transition-transform duration-300 group-hover:scale-105"
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Lists.tsx
                   style={{ 
                     left: `${index * 16}px`,
                     top: `${index * 4}px`,
@@ -705,6 +784,7 @@ const ListsPage = () => {
                 <div className="flex items-center space-x-2 mt-2">
                   <Avatar className="h-6 w-6">
                     <AvatarImage src={list.creator.avatar} alt={list.creator.name} />
+<<<<<<< HEAD:frontend/src/pages/Lists.tsx
                     <AvatarFallback className="text-xs bg-muted text-foreground">
                       {list.creator.name.split(' ').map(n => n[0]).join('')}
                     </AvatarFallback>
@@ -714,6 +794,17 @@ const ListsPage = () => {
                     <span>{formatNumber(list.videoCount)} films</span>
                     <div className="flex items-center space-x-1">
                       <Heart className="h-4 w-4 fill-current text-primary" />
+=======
+                    <AvatarFallback className="text-xs">
+                      {list.creator.name.split(' ').map(n => n[0]).join('')}
+                    </AvatarFallback>
+                  </Avatar>
+                  <span className="text-sm font-medium text-muted-foreground">{list.creator.username}</span>
+                  <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+                    <span>{formatNumber(list.videoCount)} films</span>
+                    <div className="flex items-center space-x-1">
+                      <Heart className="h-4 w-4 fill-current text-red-500" />
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Lists.tsx
                       <span>{formatNumber(list.likes)}</span>
                     </div>
                     <div className="flex items-center space-x-1">
@@ -856,6 +947,7 @@ const ListsPage = () => {
       <main className="flex-1">
         {/* Simple header section - matching the uploaded design */}
         <div className="bg-background py-12">
+<<<<<<< HEAD:frontend/src/pages/Lists.tsx
           <div className="max-w-6xl mx-auto px-4 md:px-8 text-center">
             <h1 className="text-xl md:text-xl lg:text-2xl font-bold text-foreground mb-4">
               Collect, curate, and share. Lists are the perfect way to group films.
@@ -865,12 +957,25 @@ const ListsPage = () => {
                 Start your own list
               </Button>
             </Link>
+=======
+          <div className="container mx-auto px-4 text-center">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground mb-4">
+              Collect, curate, and share. Lists are the perfect way to group videos.
+            </h1>
+            <Button size="lg" className="btn-letterboxd mt-8">
+              Start your own list
+            </Button>
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Lists.tsx
           </div>
         </div>
 
         {/* Search section */}
         <div className="bg-background border-b border-border">
+<<<<<<< HEAD:frontend/src/pages/Lists.tsx
           <div className="max-w-6xl mx-auto px-4 md:px-8 py-6">
+=======
+          <div className="container mx-auto px-4 py-6">
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Lists.tsx
             <div className="max-w-md mx-auto">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -879,7 +984,11 @@ const ListsPage = () => {
                   placeholder="Search lists..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
+<<<<<<< HEAD:frontend/src/pages/Lists.tsx
                   className="bg-input border-border text-foreground placeholder-muted-foreground focus:border-primary pl-10 pr-4 py-2 w-full rounded-full"
+=======
+                  className="pl-10 pr-4 py-2 w-full input-letterboxd"
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Lists.tsx
                 />
               </div>
             </div>
@@ -889,27 +998,44 @@ const ListsPage = () => {
         {/* Popular this week section */}
         {popularLists.length > 0 && (
           <section className="py-12 bg-background">
+<<<<<<< HEAD:frontend/src/pages/Lists.tsx
             <div className="max-w-6xl mx-auto px-4 md:px-8">
               <div className="flex items-center justify-between mb-8">
                 <h2 className="text-lg font-bold text-foreground">POPULAR THIS WEEK</h2>
                 <Button variant="ghost" className="flex items-center gap-2 text-primary hover:bg-accent hover:text-primary transition-all duration-200 ease-out hover:scale-105 active:scale-95">
+=======
+            <div className="container mx-auto px-4">
+              <div className="flex items-center justify-between mb-8">
+                <h2 className="text-2xl font-bold text-foreground">Popular This Week</h2>
+                <Button variant="ghost" className="flex items-center gap-2 text-primary btn-letterboxd-ghost">
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Lists.tsx
                   More
                   <ChevronRight className="h-4 w-4" />
                 </Button>
               </div>
               
               {loading ? (
+<<<<<<< HEAD:frontend/src/pages/Lists.tsx
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+=======
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Lists.tsx
                   {Array.from({ length: 4 }).map((_, index) => (
                     <BigListCardSkeleton key={index} />
                   ))}
                 </div>
               ) : (
+<<<<<<< HEAD:frontend/src/pages/Lists.tsx
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
                   {popularLists.map((list, index) => (
                     <div key={list.id} className="animate-in fade-in duration-500" style={{ animationDelay: `${index * 50}ms` }}>
                       <BigListCard list={list} />
                     </div>
+=======
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  {popularLists.map((list) => (
+                    <BigListCard key={list.id} list={list} />
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Lists.tsx
                   ))}
                 </div>
               )}
@@ -920,10 +1046,17 @@ const ListsPage = () => {
         {/* Featured lists section */}
         {featuredLists.length > 0 && (
           <section className="py-12 bg-card">
+<<<<<<< HEAD:frontend/src/pages/Lists.tsx
             <div className="max-w-6xl mx-auto px-4 md:px-8">
               <div className="flex items-center justify-between mb-8">
                 <h2 className="text-lg font-bold text-foreground">FEATURED LISTS</h2>
                 <Button variant="ghost" className="flex items-center gap-2 text-primary hover:bg-accent hover:text-primary transition-all duration-200 ease-out hover:scale-105 active:scale-95">
+=======
+            <div className="container mx-auto px-4">
+              <div className="flex items-center justify-between mb-8">
+                <h2 className="text-2xl font-bold text-foreground">Featured Lists</h2>
+                <Button variant="ghost" className="flex items-center gap-2 text-primary btn-letterboxd-ghost">
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Lists.tsx
                   All
                   <ChevronRight className="h-4 w-4" />
                 </Button>
@@ -937,10 +1070,15 @@ const ListsPage = () => {
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<<<<<<< HEAD:frontend/src/pages/Lists.tsx
                   {featuredLists.map((list, index) => (
                     <div key={list.id} className="animate-in fade-in duration-500" style={{ animationDelay: `${index * 50}ms` }}>
                       <RegularListCard list={list} />
                     </div>
+=======
+                  {featuredLists.map((list) => (
+                    <RegularListCard key={list.id} list={list} />
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Lists.tsx
                   ))}
                 </div>
               )}
@@ -951,10 +1089,17 @@ const ListsPage = () => {
         {/* Recently liked section */}
         {recentlyLikedLists.length > 0 && (
           <section className="py-12 bg-background">
+<<<<<<< HEAD:frontend/src/pages/Lists.tsx
             <div className="max-w-6xl mx-auto px-4 md:px-8">
               <div className="flex items-center justify-between mb-8">
                 <h2 className="text-lg font-bold text-foreground">RECENTLY LIKED</h2>
                 <Button variant="ghost" className="flex items-center gap-2 text-primary hover:bg-accent hover:text-primary transition-all duration-200 ease-out hover:scale-105 active:scale-95">
+=======
+            <div className="container mx-auto px-4">
+              <div className="flex items-center justify-between mb-8">
+                <h2 className="text-2xl font-bold text-foreground">Recently Liked</h2>
+                <Button variant="ghost" className="flex items-center gap-2 text-primary btn-letterboxd-ghost">
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Lists.tsx
                   View All
                   <ChevronRight className="h-4 w-4" />
                 </Button>
@@ -968,10 +1113,15 @@ const ListsPage = () => {
                 </div>
               ) : (
                 <div className="space-y-4 max-w-4xl">
+<<<<<<< HEAD:frontend/src/pages/Lists.tsx
                   {recentlyLikedLists.map((list, index) => (
                     <div key={list.id} className="animate-in fade-in duration-500" style={{ animationDelay: `${index * 50}ms` }}>
                       <VerticalListCard list={list} />
                     </div>
+=======
+                  {recentlyLikedLists.map((list) => (
+                    <VerticalListCard key={list.id} list={list} />
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Lists.tsx
                   ))}
                 </div>
               )}

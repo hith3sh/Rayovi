@@ -292,11 +292,19 @@ const MembersPage = () => {
   };
 
   const MemberCard = ({ member, featured = false, isFollowed = false }: { member: Member; featured?: boolean; isFollowed?: boolean }) => (
+<<<<<<< HEAD:frontend/src/pages/Members.tsx
     <Card className={`material-hover group overflow-hidden transition-all duration-300 card-letterboxd ${featured ? 'border-primary/20' : ''}`}>
       <CardContent className="p-4">
         <div className="flex flex-col items-center text-center space-y-3">
           <div className="relative">
             <Avatar className={`${featured ? 'h-24 w-24' : 'h-16 w-16'} border-2 border-border shadow-md transition-transform duration-300 avatar-letterboxd`}>
+=======
+    <Card className={`group overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 card-letterboxd ${featured ? 'border-primary/20' : ''}`}>
+      <CardContent className="p-4">
+        <div className="flex flex-col items-center text-center space-y-3">
+          <div className="relative">
+            <Avatar className={`${featured ? 'h-24 w-24' : 'h-16 w-16'} border-2 border-border shadow-md transition-transform duration-300 group-hover:scale-105 avatar-letterboxd`}>
+>>>>>>> 84ac6a3b453bad20ec2feac9327f1a5e9a9faa31:src/pages/Members.tsx
               <AvatarImage src={member.avatar} alt={member.name} />
               <AvatarFallback className={`${featured ? 'text-lg' : 'text-sm'} font-semibold bg-muted text-muted-foreground`}>
                 {member.name.split(' ').map(n => n[0]).join('')}
