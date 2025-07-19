@@ -1,6 +1,8 @@
 # Rayovi
 
 Rayovi is a personal project built for people who love watching YouTube but wish it offered more—like ranking, reviewing, and creating lists of videos. If you enjoy discovering, organizing, and sharing your favorite YouTube content, but find YouTube itself lacking in social and curation features, Rayovi is for you.
+<img width="1438" alt="image" src="https://github.com/user-attachments/assets/f6e272b9-1838-49ca-95d4-b2a98a5586f3" />
+
 
 ## Features
 
