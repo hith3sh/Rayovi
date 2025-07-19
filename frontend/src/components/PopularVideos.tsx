@@ -35,6 +35,7 @@ const PopularVideos: React.FC<PopularVideosProps> = ({ videos, title }) => {
             channelName={video.channelName}
             year={video.year}
             rating={video.rating}
+            className="material-hover"
           />
         ))}
       </div>

@@ -1,0 +1,49 @@
+// Prisma schema for Rayovi
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String?
+  avatar    String?
+  lists     List[]
+  createdAt DateTime @default(now())
+}
+
+model List {
+  id          String      @id @default(uuid())
+  name        String
+  description String?
+  tags        String?
+  visibility  String      // 'public', 'private', 'unlisted'
+  ranked      Boolean     @default(false)
+  createdAt   DateTime    @default(now())
+  user        User        @relation(fields: [userId], references: [id])
+  userId      String
+  videos      ListVideo[]
+}
+
+model Video {
+  id        String      @id @default(uuid())
+  youtubeId String      @unique
+  title     String
+  thumbnail String
+  lists     ListVideo[]
+}
+
+model ListVideo {
+  id      String   @id @default(uuid())
+  list    List     @relation(fields: [listId], references: [id])
+  listId  String
+  video   Video    @relation(fields: [videoId], references: [id])
+  videoId String
+  position Int?
+} 

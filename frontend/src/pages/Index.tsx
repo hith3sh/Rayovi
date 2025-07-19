@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import RecentActivity from '@/components/RecentActivity';
@@ -6,6 +6,7 @@ import PopularVideos from '@/components/PopularVideos';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { Link } from 'react-router-dom';
+import { Avatar } from '@/components/ui/avatar';
 
 const Index = () => {
   // Mock data for videos
@@ -155,6 +156,18 @@ const Index = () => {
     },
   ];
 
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const stored = localStorage.getItem('user');
+    if (stored) setUser(JSON.parse(stored));
+  }, []);
+
+  function handleSignOut() {
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    window.location.reload();
+  }
+
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <Navbar />
@@ -164,19 +177,49 @@ const Index = () => {
         <section className="gradient-letterboxd py-16 text-foreground">
           <div className="container mx-auto px-4">
             <div className="max-w-2xl space-y-6">
-              <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">
-                We're everything youtube is missing.
-              </h1>
-              <p className="text-lg text-muted-foreground">
-                The social network for Youtube video lovers.
-              </p>
-              <div className="space-x-4">
-                <Link to="/auth">
-                  <Button size="lg" className="get-started-btn">
-                    Get started — it's free!
-                  </Button>
-                </Link>
-              </div>
+              {user ? (
+                <>
+                  <div className="flex items-center gap-4 mb-4">
+                    <Avatar src={user.picture || ''} alt={user.name} size={56} />
+                    <div>
+                      <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl text-foreground">
+                        Welcome, {user.name}!
+                      </h1>
+                      <p className="text-lg text-muted-foreground">
+                        Glad to have you back. Start exploring or create a new list!
+                      </p>
+                    </div>
+                  </div>
+                  <div className="space-x-4 mt-4">
+                    <Link to="/lists">
+                      <Button size="lg" className="get-started-btn">
+                        Go to your lists
+                      </Button>
+                    </Link>
+                    <Link to="/new-list">
+                      <Button size="lg" variant="outline">
+                        Create a new list
+                      </Button>
+                    </Link>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl text-foreground">
+                    We're everything youtube is missing.
+                  </h1>
+                  <p className="text-lg text-muted-foreground">
+                    The social network for Youtube lovers.
+                  </p>
+                  <div className="space-x-4">
+                    <Link to="/auth">
+                      <Button size="lg" className="get-started-btn">
+                        Get started — it's free!
+                      </Button>
+                    </Link>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </section>

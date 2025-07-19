@@ -33,7 +33,7 @@ const VideoCard: React.FC<VideoCardProps> = ({
   };
 
   return (
-    <div className="video-card card-letterboxd group relative">
+    <div className="video-card card-letterboxd group relative material-hover">
       <Link to={`/video/${id}`}>
         <div className="relative overflow-hidden">
           <img 
